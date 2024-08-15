@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{text-align: center;
+             background-image: url('Fundo.jpg');
+             background-size: cover;
+             background-position: center;
+            }
+        h2{margin-top: 50px
+        }
+
+        div{background-color: azure;
+            border-radius: 15px;
+            margin: auto;
+            margin-top: 5%;
+            width: 40%;
+            height: 35%;
+            font-family: monospace;
+            font-size:large;
+            padding-bottom: 20px;
+        }
+
+        h1{
+            background-color:  rgb(38, 109, 103);
+            color: white;
+            border-radius: 25px;
+            padding: 5%;
+        }
+
+        h3{
+            margin-bottom: 2px
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="div">
+    <h1>Postar novo trabalho: </h1>
+    
+        <h3 class="l">Título:</h3><p></p>
+        <input id="escrita" type="text"><p></p>
+        <h3 class="l">Formato/tipo do trabalho:</h3><p></p>
+        <input id="escrita" type="text" placeholder="Ex: Slides, Cartaz, etc."><P></P>
+        <h3 class="l">É necessário cabeçalho:</h3><p></p>
+        <input type="checkbox" id="sim">
+        <label class="m">Sim<label><p></p>
+        <input type="checkbox" id="nao">
+        <label class="m">Não</label><p></p>
+        <h3 class="l">Informações do cabeçalho:</h3><p></p>
+        <input id="escrita" type="text" placeholder="Ex: Escola, Nome, Data, etc."><p></p>
+        <h3 class="l">Assunto do trabalho:</h3><p></p>
+        <input id="escrita" type="text"><p></p>
+        <h3 style="margin-bottom: 2px">Explicação e detalhes sobre o trabalho:</h3>
+        <textarea required="" name="mens" placeholder="Sugestões de como os alunos podem fazer, especificações, ideias e maior explicação." rows="15" cols="55"></textarea><p></p>
+
+
+
+
+
+    
+</div>
+
+
+    <h2>Animal de Estimação</h2>
+    <form container="">
+        <input type="radio" id="cachorro">
+        <label class="l">Cachorro</label><p></p>
+        <input type="radio" id="gato">
+        <label  class="l">Gato</label><p></p>
+        <input type="radio" id="Passarinho">
+        <label  class="l">Passarinho</label><p></p>
+        <input type="radio" id="outro">
+        <label  class="l">Outros</label>
+    </form>
+
+
+    <h2>Com quem você mora?</h2>
+        <input type="checkbox" id="mae">
+        <label class="l">Mãe</label><p></p>
+        <input type="checkbox" id="pai">
+        <label class="l">Pai</label><p></p>
+        <input type="checkbox" id="irmaos">
+        <label class="l">Irmãos(as)</label><p></p>
+        <input type="checkbox" id="avos">
+        <label class="l">Avós</label><p></p>
+        <input type="checkbox" id="tios">
+        <label class="l">Tios</label><p></p>
+        <input type="checkbox" id="primos">
+        <label class="l">Primos</label><p></p>
+        <input type="checkbox" id="outros">
+        <label class="l">Outros</label><p></p>
+
+
+    <h2>Escolha uma cor:</h2>
+    <select name="Cores">
+    <option selected="" disabled="" value=""> Selecione uma cor</option>
+    <option value="Vermelho">Vermelho</option>
+    <option value="Azul">Azul</option>
+    <option value="Amarelo">Amarelo</option>
+    </select>
+
+    <h2 style="margin-bottom: 2px">Mensagem:</h2>
+    <textarea required="" name="mens" placeholder="Digite aqui sua mensagem" rows="15" cols="55"></textarea><p></p>
+
+    <input type="submit" value="Enviar formulário">
