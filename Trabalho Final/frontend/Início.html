@@ -32,7 +32,6 @@
              color: rgb(38, 109, 103);
              border-radius: 15px;
              border-color: rgb(38, 109, 103);
-             
             }
             p{
                 color: rgb(38, 109, 103); 
@@ -45,17 +44,28 @@
                 color: white
             }
         </style>
+        <script>
+            function redirecionar1() {
+                window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Reposit%C3%B3rios/Trabalho%20Final/Login%20Aluno.html';
+            }
+            function redirecionar2() {
+                window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Reposit%C3%B3rios/Trabalho%20Final/Login%20Professor.html';
+            }
+            function redirecionar3() {
+                window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Reposit%C3%B3rios/Trabalho%20Final/Criar%20Conta.html';
+            }
+        </script>
     </head>
     <body>
         <div class="inicio">
             <p> </p>
             <h1 class="login">Bem Vindo</h1>
             <div CLASS="RODAPE">
-                <button class="b">Sou Aluno          ></button>
+                <button class="b" onclick="redirecionar1()">Sou Aluno          ></button>
                 <P> </P>
-                <button class="b">Sou Professor      ></button>
+                <button class="b" onclick="redirecionar2()">Sou Professor      ></button>
                 <p>========= OU =========</p>
-                <button class="c">Criar conta</button>
+                <button class="c" onclick="redirecionar3()">Criar conta</button>
             </div>
         </div>
         
