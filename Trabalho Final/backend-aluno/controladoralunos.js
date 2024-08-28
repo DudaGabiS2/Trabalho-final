@@ -1,9 +1,9 @@
-const Produto = require('../modelo/dados');
+const Produto = require('../modelo/dadosalunos');
 
 const ControladorAlunos = {
     createDados: async (req, res) => {
         try {
-            const novosDados = await Dados.create(req.body);
+            const novosDados = await DadosAlunos.create(req.body);
             res.json(novosDados);
         } catch (error) {
             res.status(500).send(error.message);
@@ -12,8 +12,8 @@ const ControladorAlunos = {
 
     getAllDados: async (req, res) => {
         try {
-            const dados = await Dados.findAll();
-            res.json(dados);
+            const dadosalunos = await DadosAlunos.findAll();
+            res.json(dadosalunos);
         } catch (error) {
             res.status(500).send(error.message);
         }
@@ -21,11 +21,11 @@ const ControladorAlunos = {
 
     getDadosById: async (req, res) => {
         try {
-            const dados = await Dados.findByPk(req.params.id);
-            if (!dados) {
+            const dadosalunos = await DadosAlunos.findByPk(req.params.id);
+            if (!dadosalunos) {
                 return res.status(404).send('Dados não encontrados');
             }
-            res.json(dados);
+            res.json(dadosalunos);
         } catch (error) {
             res.status(500).send(error.message);
         }
@@ -33,11 +33,11 @@ const ControladorAlunos = {
 
     updateDados: async (req, res) => {
         try {
-            const dados = await Dados.findByPk(req.params.id);
-            if (!dados) {
+            const dadosalunos = await DadosAlunos.findByPk(req.params.id);
+            if (!dadosalunos) {
                 return res.status(404).send('Dados não encontrados');
             }
-            await dados.update(req.body);
+            await dadosalunos.update(req.body);
             res.send('Dados atualizados com sucesso');
         } catch (error) {
             res.status(500).send(error.message);
@@ -46,11 +46,11 @@ const ControladorAlunos = {
 
     deleteDados: async (req, res) => {
         try {
-            const dados = await Dados.findByPk(req.params.id);
-            if (!dados) {
+            const dadosalunos = await DadosAlunos.findByPk(req.params.id);
+            if (!dadosalunos) {
                 return res.status(404).send('Dados não encontrados');
             }
-            await dados.destroy();
+            await dadosalunos.destroy();
             res.send('Dados deletados com sucesso');
         } catch (error) {
             res.status(500).send(error.message);

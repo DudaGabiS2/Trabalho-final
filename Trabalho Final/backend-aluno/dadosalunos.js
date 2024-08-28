@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('./database');
 const { uniqueId } = require('lodash');
 
-class Dados extends Model {}
+class DadosAlunos extends Model {}
 
 Dados.init({
     idaluno: {
@@ -22,9 +22,9 @@ Dados.init({
     }
 }, {
     sequelize,
-    modelName: 'dados',
+    modelName: 'dadosalunos',
     timestamps: false
 });
 
-module.exports = Dados
+module.exports = DadosAlunos
 

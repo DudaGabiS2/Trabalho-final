@@ -1,20 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const ControladorAlunos = require('./controladoralunos');
+const ControladorAlunos = require('.controlador/controladoralunos');
 
 // Rota para criar um novo produto
-router.post('/dados', ControladorAlunos.createDados);
+router.post('/dadosalunos', controladoralunos.createDadosAlunos);
 
 // Rota para obter todos os produtos
-router.get('/dados', ControladorAlunos.getAllDados);
+router.get('/dadosalunos', controladoralunos.getAllDadosAlunos);
 
 // Rota para obter um produto pelo ID
-router.get('/dados/:id', ControladorAlunos.getDadosById);
+router.get('/dadosalunos/:id', controladoralunos.getDadosAlunosById);
 
 // Rota para atualizar um produto
-router.put('/dados/:id', ControladorAlunos.updateDados);
+router.put('/dadosalunos/:id', controladoralunos.updateDadosAlunos);
 
 // Rota para deletar um produto
-router.delete('/dados/:id', ControladorAlunos.deleteDados);
+router.delete('/dadosalunos/:id', controladoralunos.deleteDadosAlunos);
 
 module.exports = router;
