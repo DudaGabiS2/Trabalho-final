@@ -40,6 +40,37 @@
         .b3:hover{
             background-color: azure;
         }
+        .b:hover{
+            background-color: rgb(46, 136, 128);
+        }
+        .site{
+            display: flex;
+
+
+        }
+
+
+        .lateral {
+            background: local rgb(38, 109, 103);
+            width: 250px;
+            min-height: 100vh;
+            float: flex;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+        }
+
+
+        .b {
+            width: 100%;
+            padding: 40px;
+            background-color: rgb(38, 109, 103);
+            border-radius: 15px;
+            border: 1px solid rgb(38, 109, 103);
+            font-family: monospace;
+            font-size: x-large;
+            align-items: center;
+        }
     </style>
     <script>
         function redirecionar1() {
@@ -48,13 +79,29 @@
         function redirecionar2() {
             window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Trabalho%20Final/Frontendcerto/FormTrabalho.html';
         }
+        
+    document.addEventListener('DOMContentLoaded', () => {
+    const logoutButton = document.getElementById('logoutButton');
+
+    logoutButton.addEventListener('click', () => {
+        localStorage.removeItem('loggedIn');
+        window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Trabalho%20Final/Frontendcerto/Login%20Professor.html'; // Redireciona para a página de login
+    });
+});
     </script>
     <body>
-        <div class = criar>
-        <h1>Criar Trabalho Prova</h1>
-        <p>Para criar um Trabalho ou uma Prova basta clicar no botão abaixo do qual você deseja:</p>
-        <button class = b3 onclick="redirecionar1()">Criar Prova</button>     <button class = b3 onclick="redirecionar2()">Criar Trabalho</button>
-        <p></p>
+        <div class="site">
+                <div class=lateral>
+                    <p></p>
+                    <p></p>
+                    <button class= b id="logoutButton">Sair</button> 
+                </div>
+            <div class = criar>
+            
+            <h1>Criar Trabalho Prova</h1>
+            <p>Para criar um Trabalho ou uma Prova basta clicar no botão abaixo do qual você deseja:</p>
+            <button class = b3 onclick="redirecionar1()">Criar Prova</button>     <button class = b3 onclick="redirecionar2()">Criar Trabalho</button>
+            <p></p>
         </div>
     </body>
 </head>

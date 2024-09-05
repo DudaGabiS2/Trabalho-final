@@ -8,14 +8,14 @@
             }
 
 
-           .inicio{
+           form{
             text-align: center;
             background: local white;
             border-radius: 15px;
             margin: auto;
             margin-top: 10%;
             width: 20%;
-            height:68%;
+            height:45%;
             font-family: monospace;
             font-size:x-large;
         }
@@ -59,12 +59,64 @@
                 height: 7%;
                
             }
-
+            .rode{
+                color: rgb(38, 109, 103);
+                text-align:left;
+                margin-left: 10px;
+                margin-bottom: 5px
+            }
+            label{
+                color: rgb(38, 109, 103);
+                text-align:left;
+                margin-left: 10px;
+                margin-bottom: 5px
+            }
 
         </style>
     </head>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const registerForm = document.getElementById('registerForm');
+    const messageDiv = document.getElementById('message');
+    const data = Object.fromEntries(formData.entries());
+    let endpoint;
+
+    registerForm.addEventListener('submit', (event) => {
+        event.preventDefault(); // Previne o comportamento padrão do formulário
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        if (data.role === 'student') {
+            endpoint = 'http://localhost:3000/api/alunos';
+        } else if (data.role === 'teacher') {
+            endpoint = 'http://localhost:3000/api/professores';
+        } else {
+            messageDiv.textContent = 'Não Encontrado.';
+            return;
+        }
+
+        fetch(endpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+
+        .then(response => response.text())
+        .then(data => {
+            messageDiv.textContent = data;
+        })
+        .catch(error => {
+            allert ('Erro ao registrar.');
+            console.error('Erro:', error);
+        });
+    });
+});
+
+    </script>
     <body>
-        <div class="inicio">
+        <form id = criarConta>
             <p> </p>
             <h1 class="login">Crie Sua Conta</h1>
             <div CLASS="RODAPE">
@@ -72,14 +124,18 @@
                <input id = "campo_nome" type = "text">
                <p>Insira sua senha</p>
                <input id = "campo_senha" type = "password">
-               <p>Insira sua turma</p>
-               <input id = "campo_turma" type = "text">
-               <p>============== OU =============</p>
-               <p>Insira a disciplina que leciona</p>
-               <input id = "campo_disciplina" type = "text">
+                <p> </p>
+               <form id="registerForm">
+                <label for="role">Oque você é:</label>
+                <select id="role" name="role" required>
+                    <option value=""></option>
+                    <option value="student">Aluno</option>
+                    <option value="teacher">Professor</option>
+                </select>
                <P></P>
                <button class="b">Criar Conta</button>
             </div>
-        </div>
+        </form>
+        <div id="message"></div>
     </body>
 </html>
