@@ -93,6 +93,15 @@
     function redirecionar2() {
         window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Trabalho%20Final/Frontendcerto/Hor%C3%A1rio.html';
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+    const logoutButton = document.getElementById('logoutButton');
+
+    logoutButton.addEventListener('click', () => {
+        localStorage.removeItem('loggedIn');
+        window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Trabalho%20Final/Frontendcerto/Login%20Aluno.html'; // Redireciona para a página de login
+    });
+});
 </script>
 <body>
 <div class = lateral>
@@ -100,7 +109,7 @@
             <p> </p>
             <button class = b onclick="redirecionar1()">Agenda</button>
             <button class = b2 onclick="redirecionar2()">Horário</button>
-            
+            <button class= b id="logoutButton">Sair</button>
             
         </div>
 
@@ -125,8 +134,8 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>05</td>
-                <td>06</td>
+                <td></td>
+                <td></td>
             </tr>
             <tr>
                 <td>8:00 às 8:45</td>

@@ -56,23 +56,68 @@
                 height: 10%;
                 
             }
+            .botao{
+                width: 90%;
+             height: 10%;
+             background-color: rgb(38, 109, 103);
+             color: white;
+             border-radius: 15px;
+             border-color: rgb(38, 109, 103);
+             font-size: x-large;  
+            }
 
         </style>
     </head>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+                const loginForm = document.getElementById('loginForm');
+                const messageDiv = document.getElementById('message');
+            
+                // Verifica se o usuário está logado
+                if (localStorage.getItem('loggedIn')) {
+                     window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Trabalho%20Final/Frontendcerto/Tela%20Professor.html'; // Redireciona para a página de boas-vindas 
+                };
+            
+                loginForm.addEventListener('submit', (event) => {
+                    event.preventDefault();
+
+                    const username = document.getElementById('campo_nome').value;
+                    const disciplina = document.getElementById('campo_disciplina').value;
+                    const password = document.getElementById('campo_senha').value;
+            
+                    fetch('http://localhost:3000/api/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ username, password }),
+                    })
+            
+                    if (username === validUsername && turma === validDisciplina && password === validPassword) {
+                        localStorage.setItem('loggedIn', 'true');
+                        window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Trabalho%20Final/Frontendcerto/Tela%20Professor.html';
+                    } else {
+                        alert("Nome de usuário ou senha incorretos, ou não encontrados.")
+                    }
+                });
+        });
+    </script>
     <body>
         <div class="inicio">
             <p> </p>
             <h1 class="login">Login de Professor</h1>
-            <div CLASS="RODAPE">
+            <form id = "loginForm">
                <p>Usuário</p>
                <input id = "campo_nome" type = "text">
                <p>Disciplina</p>
                <input id = "campo_disciplina" type = "text">
                <p>Senha</p>
                <input id = "campo_senha" type = "password">
+               <P> </P>
+               <input class="botao" type="submit" value="Entrar">
                <P></P>
-               <button class="b">Entrar</button>
-            </div>
+            </form>
+            <div id="message"></div>
         </div>
     </body>
 </html>
