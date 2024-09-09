@@ -1,16 +1,16 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('./database');
+const sequelize = require('../config/database');
 const { uniqueId } = require('lodash');
 
-class DadosProvas extends Model {}
+class Provas extends Model {}
 
-Dados.init({
-    idprova: {
+Provas.init({
+    id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    tipoprova: {
+    tipo: {
         type: DataTypes.STRING,
     },
     consulta: {
@@ -37,11 +37,11 @@ Dados.init({
     }
 }, {
     sequelize,
-    modelName: 'dadosprovas',
+    modelName: 'Provas',
     timestamps: false
 });
 
-module.exports = DadosProvas
+module.exports = Provas
 
 //idprova - PrimaryKey - INT
 //tipoprova - STRING

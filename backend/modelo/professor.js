@@ -1,23 +1,23 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-class professor extends Model { }
+class Professor extends Model { }
 
-professor.init({
+Professor.init({
                             
 
-            idprofessor: {                     
+            id: {                     
                 type: DataTypes.INTEGER,
                 primaryKey: true
                
         },    
         
-            userprofessor: {  
+            user: {  
               type: DataTypes.STRING,         
               unique: true          
 
         },
-        senhaprofessor: {                    
+            senha: {                    
               type: DataTypes.STRING,
               unique: true 
 
@@ -27,8 +27,8 @@ professor.init({
         }
 }, {
         sequelize,
-        modelName: 'professor',
+        modelName: 'Professor',
         timestamps: false
 
 })
-module.exports = professor
+module.exports = Professor

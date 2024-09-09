@@ -13,10 +13,16 @@ db.authenticate()
 app.use(express.json());
 
 // Importar rotas
-const rotastrabalho = require('./rotas/rotastrabalhos');
+const rotastrabalho = require('./rotas/rotastrabalho');
+const rotasalunos = require('./rotas/rotasalunos');
+const rotasprofessor = require('./rotas/rotasprofessor');
+const rotasprovas = require('./rotas/rotasprovas')
 
 // Usar rotas
 app.use('/api/trabalho', rotastrabalho);
+app.use('/api/provas', rotasprovas);
+app.use('/api/professor', rotasprofessor);
+app.use('/api/alunos', rotasalunos)
 
 // Iniciar o servidor
 const PORT = process.env.PORT || 3000;

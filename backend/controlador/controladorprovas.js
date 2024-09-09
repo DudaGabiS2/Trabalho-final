@@ -1,19 +1,19 @@
-const Produto = require('../modelo/dadosprovas');
+const Provas = require('../modelo/Provas');
 
-const ControladorProvas = {
-    createProva: async (req, res) => {
+const controladorProvas = {
+    createProvas: async (req, res) => {
         try {
-            const novaProva = await Prova.create(req.body);
-            res.json(novaProva);
+            const novaProvas = await Provas.create(req.body);
+            res.json(novaProvas);
         } catch (error) {
             res.status(500).send(error.message);
         }
     },
 
-    getAllProva: async (req, res) => {
+    getAllProvas: async (req, res) => {
         try {
-            const prova = await Prova.findAll();
-            res.json(prova);
+            const Provas = await Provas.findAll();
+            res.json(Provas);
         } catch (error) {
             res.status(500).send(error.message);
         }
@@ -21,11 +21,11 @@ const ControladorProvas = {
 
     getProvaById: async (req, res) => {
         try {
-            const prova = await Prova.findByPk(req.params.id);
-            if (!prova) {
+            const Provas = await Provas.findByPk(req.params.id);
+            if (!Provas) {
                 return res.status(404).send('Prova não encontrada');
             }
-            res.json(prova);
+            res.json(Provas);
         } catch (error) {
             res.status(500).send(error.message);
         }
@@ -33,11 +33,11 @@ const ControladorProvas = {
 
     updateProva: async (req, res) => {
         try {
-            const prova = await Prova.findByPk(req.params.id);
-            if (!prova) {
+            const Provas = await Provas.findByPk(req.params.id);
+            if (!Provas) {
                 return res.status(404).send('Prova não encontrada');
             }
-            await prova.update(req.body);
+            await Provas.update(req.body);
             res.send('Prova atualizada com sucesso');
         } catch (error) {
             res.status(500).send(error.message);
@@ -46,11 +46,11 @@ const ControladorProvas = {
 
     deleteProva: async (req, res) => {
         try {
-            const prova = await Prova.findByPk(req.params.id);
-            if (!prova) {
+            const Provas = await Provas.findByPk(req.params.id);
+            if (!Provas) {
                 return res.status(404).send('Prova não encontrada');
             }
-            await prova.destroy();
+            await Provas.destroy();
             res.send('Prova deletada com sucesso');
         } catch (error) {
             res.status(500).send(error.message);
@@ -62,4 +62,4 @@ const ControladorProvas = {
     // ... (a ser implementado)
 };
 
-module.exports = ControladorProvas;
+module.exports = controladorProvas;

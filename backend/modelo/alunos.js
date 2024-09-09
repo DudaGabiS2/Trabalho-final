@@ -1,20 +1,20 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('./database');
+const sequelize = require('../config/database');
 const { uniqueId } = require('lodash');
 
-class DadosAlunos extends Model {}
+class Alunos extends Model {}
 
-Dados.init({
-    idaluno: {
+Alunos.init({
+    id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    useraluno: {
+    user: {
         type: DataTypes.STRING,
         unique: true
     },
-    senhaaluno: {
+    senha: {
         type: DataTypes.STRING
     },
     turma: {
@@ -22,9 +22,9 @@ Dados.init({
     }
 }, {
     sequelize,
-    modelName: 'dadosalunos',
+    modelName: 'Alunos',
     timestamps: false
 });
 
-module.exports = DadosAlunos
+module.exports = Alunos
 

@@ -4,12 +4,12 @@ const sequelize = require('../config/database');
 class Trabalho extends Model {}
 
 Trabalho.init({
-    idtrabalho: {
+    id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    tipotrabalho: {
+    tipo: {
         type: DataTypes.STRING
     },
     cab: {
@@ -50,8 +50,8 @@ Trabalho.init({
     }
 }, {
     sequelize,
-    modelName: 'trabalho',
+    modelName: 'Trabalho',
     timestamps: false
 })
 
-module.exports = trabalho
+module.exports = Trabalho
