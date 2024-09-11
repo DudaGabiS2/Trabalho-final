@@ -3,10 +3,10 @@ const router = express.Router();
 const controladorprovas = require('../controlador/controladorprovas');
 
 // Rota para criar um novo produto
-router.post('/', controladorprovas.createprovas);
+router.post('/', controladorprovas.createProvas);
 
 // Rota para obter todos os produtos
-router.get('/', controladorprovas.getAllprovas);
+router.get('/', controladorprovas.getAllProvas);
 
 // Rota para obter um produto pelo ID
 router.get('/:id', controladorprovas.getProvaById);

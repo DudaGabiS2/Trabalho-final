@@ -21,9 +21,6 @@ Professor.init({
               type: DataTypes.STRING,
               unique: true 
 
-        },                                   
-            disciplina: {   
-                type: DataTypes.STRING
         }
 }, {
         sequelize,

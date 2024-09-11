@@ -16,9 +16,6 @@ Alunos.init({
     },
     senha: {
         type: DataTypes.STRING
-    },
-    turma: {
-        type: DataTypes.DECIMAL
     }
 }, {
     sequelize,
