@@ -48,6 +48,55 @@
     function redirecionar1() {
         window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Trabalho%20Final/Frontendcerto/Tela%20Professor.html';
     }
+
+    document.getElementById('workForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+    const tipo = document.getElementById('tipo').value;
+    const consulta = document.querySelector('input[name="consulta"]:checked').value;
+    const ferramentas = document.getElementById('ferramentas').value;
+    const quais = document.getElementById('quais').value;
+    const explicacao = document.getElementById('explicacao').value;
+    const tempo = document.querySelector('input[name="tempo"]:checked').value;
+    const data = document.querySelector('input[name="data"]:checked').value;
+    const classes = Array.from(document.getElementById('classes').selectedOptions)
+                                .map(option => option.value);
+
+    // Cria o objeto com os dados
+    const dados = {
+        tipos,
+        consulta,
+        ferramentas,
+        quais,
+        explicacao,
+        references,
+        tempo,
+        data,
+        classes: classes
+    };
+
+    // Envia os dados para o servidor
+     fetch('localhost:3000', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert('Dados enviados com sucesso!');
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        alert('Erro ao enviar dados.');
+        console.error('Error:', error);
+    });
+});
+
+
+
+
 </script>
 <body>
     <div class="div">
