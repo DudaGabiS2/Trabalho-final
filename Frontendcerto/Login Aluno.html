@@ -14,7 +14,7 @@
             margin: auto;
             margin-top: 14%;
             width: 20%;
-            height:50%;
+            height:37%;
             font-family: monospace;
             font-size:x-large;
         } 
@@ -81,7 +81,6 @@
             loginForm.addEventListener('submit', (event) => {
                 event.preventDefault();
                 const username = document.getElementById('campo_nome').value;
-                const turma = document.getElementById('campo_turma').value;
                 const password = document.getElementById('campo_senha').value;
                 
                 fetch('http://localhost:3000/api/alunos', {
@@ -92,7 +91,7 @@
                         body: JSON.stringify({ username, password }),
                     })
 
-                if (username === validUsername && turma === validTurma && password === validPassword) {
+                if (username === validUsername && password === validPassword) {
                     localStorage.setItem('loggedIn', 'true');
                     window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Trabalho%20Final/Frontendcerto/Agenda.html';
                 } else {
@@ -108,8 +107,6 @@
             <form id = loginForm>
                <p>Usuário</p>
                <input id = "campo_nome" type = "text">
-               <p>Turma</p>
-               <input id = "campo_turma" type = "text">
                <p>Senha</p>
                 <input id = "campo_senha" type = "password">
                <P></P>
