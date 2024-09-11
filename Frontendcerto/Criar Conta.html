@@ -1,91 +1,103 @@
 <html>
-    <head>
-        <style>
-            body{
-                background-image: url('Fundo.jpg');
-                background-size: cover;
-                background-position: center
-            }
+
+<head>
+    <style>
+        body {
+            background-image: url('Fundo.jpg');
+            background-size: cover;
+            background-position: center
+        }
 
 
-           form{
+        #criarConta {
             text-align: center;
             background: local white;
             border-radius: 15px;
             margin: auto;
             margin-top: 10%;
             width: 20%;
-            height:45%;
+            height: 45%;
             font-family: monospace;
-            font-size:x-large;
+            font-size: x-large;
         }
 
 
-            .b{
-             width: 90%;
-             height: 10%;
-             background-color: rgb(38, 109, 103);
-             color: white;
-             border-radius: 15px;
-             border-color: rgb(38, 109, 103);
-             font-size: x-large;
-            }
-            .c{
-             width: 70%;
-             height: 10%;
-             background-color: white;
-             color: rgb(38, 109, 103);
-             border-radius: 15px;
-             border-color: rgb(38, 109, 103);
-             
-            }
-            p{
-                color: rgb(38, 109, 103);
-                text-align:left;
-                margin-left: 10px;
-                margin-bottom: 5px
-            }
-            h1{
-                background-color: rgb(38, 109, 103);
-                padding: 20px;
-                margin-top: 4px;
-                border-radius: 15px;
-                color: white
-            }
+        .b {
+            width: 90%;
+            height: 10%;
+            background-color: rgb(38, 109, 103);
+            color: white;
+            border-radius: 15px;
+            border-color: rgb(38, 109, 103);
+            font-size: x-large;
+        }
+
+        .c {
+            width: 70%;
+            height: 10%;
+            background-color: white;
+            color: rgb(38, 109, 103);
+            border-radius: 15px;
+            border-color: rgb(38, 109, 103);
+
+        }
+
+        p {
+            color: rgb(38, 109, 103);
+            text-align: left;
+            margin-left: 10px;
+            margin-bottom: 5px
+        }
+
+        h1 {
+            background-color: rgb(38, 109, 103);
+            padding: 20px;
+            margin-top: 4px;
+            border-radius: 15px;
+            color: white
+        }
 
 
-            input{
-                width: 90%;
-                height: 7%;
-               
-            }
-            .rode{
-                color: rgb(38, 109, 103);
-                text-align:left;
-                margin-left: 10px;
-                margin-bottom: 5px
-            }
-            label{
-                color: rgb(38, 109, 103);
-                text-align:left;
-                margin-left: 10px;
-                margin-bottom: 5px
-            }
+        input {
+            width: 90%;
+            height: 7%;
 
-        </style>
-    </head>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    const registerForm = document.getElementById('registerForm');
-    const messageDiv = document.getElementById('message');
-    const data = Object.fromEntries(formData.entries());
-    let endpoint;
+        }
 
-    registerForm.addEventListener('submit', (event) => {
-        event.preventDefault(); // Previne o comportamento padrão do formulário
+        .rode {
+            color: rgb(38, 109, 103);
+            text-align: left;
+            margin-left: 10px;
+            margin-bottom: 5px
+        }
 
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
+        label {
+            color: rgb(38, 109, 103);
+            text-align: left;
+            margin-left: 10px;
+            margin-bottom: 5px
+        }
+    </style>
+</head>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const botao = document.getElementById('botao');
+        const messageDiv = document.getElementById('message');
+        let endpoint;
+
+        botao.addEventListener('click', (event) => {
+            event.preventDefault(); // Previne o comportamento padrão do formulário
+
+            const user = document.getElementById('campo_nome').value;
+            const senha = document.getElementById('campo_senha').value;
+            const role = document.getElementById('role').value;
+
+            const data = {
+                role: role,
+                user: user,
+                senha: senha
+            }
+            console.log(data)
 
         if (data.role === 'student') {
             endpoint = 'http://localhost:3000/api/alunos';
@@ -96,46 +108,50 @@
             return;
         }
 
-        fetch(endpoint, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
+            fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
 
-        .then(response => response.text())
-        .then(data => {
-            messageDiv.textContent = data;
-        })
-        .catch(error => {
-            allert ('Erro ao registrar.');
-            console.error('Erro:', error);
+                .then(response => response.text())
+                .then(data => {
+                    messageDiv.textContent = data;
+                    alert(data)
+                })
+                .catch(error => {
+                    allert('Erro ao registrar.');
+                    console.error('Erro:', error);
+                });
         });
     });
-});
 
-    </script>
-    <body>
-        <form id = criarConta>
+</script>
+
+<body>
+    <div id=criarConta>
+        <p> </p>
+        <h1 class="login">Crie Sua Conta</h1>
+        <div CLASS="RODAPE">
+            <p>Insira um nome de usuário</p>
+            <input id="campo_nome" type="text">
+            <p>Insira sua senha</p>
+            <input id="campo_senha" type="password">
             <p> </p>
-            <h1 class="login">Crie Sua Conta</h1>
-            <div CLASS="RODAPE">
-               <p>Insira um nome de usuário</p>
-               <input id = "campo_nome" type = "text">
-               <p>Insira sua senha</p>
-               <input id = "campo_senha" type = "password">
-                <p> </p>
-               <form id="registerForm">
+            <form id="registerForm">
                 <label for="role">Oque você é:</label>
                 <select id="role" name="role" required>
                     <option value=""></option>
                     <option value="student">Aluno</option>
                     <option value="teacher">Professor</option>
                 </select>
-               <P></P>
-               <button class="b">Criar Conta</button>
-            </div>
-        </form>
-        <div id="message"></div>
-    </body>
+                <P></P>
+                <button class="b" id="botao">Criar Conta</button>
+        </div>
+    </div>
+    <div id="message"></div>
+</body>
+
 </html>
