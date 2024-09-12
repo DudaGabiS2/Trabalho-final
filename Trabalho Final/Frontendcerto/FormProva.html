@@ -59,7 +59,7 @@
     const explicacao = document.getElementById('explicacao').value;
     const tempo = document.querySelector('input[name="tempo"]:checked').value;
     const data = document.querySelector('input[name="data"]:checked').value;
-    const classes = Array.from(document.getElementById('classes').selectedOptions)
+    const classSelected = Array.from(document.getElementById('classes').selectedOptions)
                                 .map(option => option.value);
 
     // Cria o objeto com os dados
@@ -72,7 +72,7 @@
         references,
         tempo,
         data,
-        classes: classes
+        classSelected: classes
     };
 
     // Envia os dados para o servidor
@@ -158,3 +158,4 @@
        
 
         <button  class="b" onclick="redirecionar1()">Enviar</button>
+
