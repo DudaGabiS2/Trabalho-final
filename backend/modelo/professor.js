@@ -4,22 +4,23 @@ const sequelize = require('../config/database');
 class Professor extends Model { }
 
 Professor.init({
-                            
 
-            id: {                     
+
+        id: {
                 type: DataTypes.INTEGER,
-                primaryKey: true
-               
-        },    
-        
-            user: {  
-              type: DataTypes.STRING,         
-              unique: true          
+                primaryKey: true,
+                autoIncrement: true
 
         },
-            senha: {                    
-              type: DataTypes.STRING,
-              unique: true 
+
+        user: {
+                type: DataTypes.STRING,
+                unique: true
+
+        },
+        senha: {
+                type: DataTypes.STRING,
+                unique: true
 
         }
 }, {

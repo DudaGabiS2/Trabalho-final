@@ -96,14 +96,23 @@
                     if (response.ok) {
                         return response.json();
                     }
-                    throw new Error('Erro ao cadastrar a pessoa');
+                    throw new Error('Erro ao cadastrar o trabalho');
                 })
-                .then(data => {
-                    console.log('Pessoa cadastrada com sucesso:', data);
+                .then(Trabalho => {
+                    console.log('Trabalho cadastrado com sucesso:', Trabalho);
                     // Limpar os campos de entrada após o envio
-                    document.getElementById('nome').value = '';
-                    document.getElementById('email').value = '';
-                    document.getElementById('idade').value = '';
+                    document.getElementById('titulo').value = '';
+                    document.getElementById('formato').value = '';
+                    document.getElementById('cabecalho').value = '';
+                    document.getElementById('informacoes').value = '';
+                    document.getElementById('assunto').value = '';
+                    document.getElementById('explicacao').value = '';
+                    document.getElementById('referencia').value = '';
+                    document.getElementById('apresentacao').value = '';
+                    document.getElementById('detap').value = '';
+                    document.getElementById('dataentrega').value = '';
+                    document.getElementById('dataap').value = '';
+                    document.getElementById('class').value = '';
                 })
                 .catch(error => {
                     console.error('Erro:', error);
