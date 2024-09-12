@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors')
 
 // Configuração do Sequelize
 const db = require('./config/database');
@@ -11,12 +12,19 @@ db.authenticate()
 
 // Middlewares
 app.use(express.json());
+app.use(cors())
 
 // Importar rotas
-const rotastrabalho = require('./rotas/rotastrabalhos');
+const rotastrabalho = require('./rotas/rotastrabalho');
+const rotasalunos = require('./rotas/rotasalunos');
+const rotasprofessor = require('./rotas/rotasprofessor');
+const rotasprovas = require('./rotas/rotasprovas')
 
 // Usar rotas
 app.use('/api/trabalho', rotastrabalho);
+app.use('/api/provas', rotasprovas);
+app.use('/api/professor', rotasprofessor);
+app.use('/api/alunos', rotasalunos)
 
 // Iniciar o servidor
 const PORT = process.env.PORT || 3000;

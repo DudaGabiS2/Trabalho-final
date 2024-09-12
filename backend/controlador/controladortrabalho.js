@@ -1,56 +1,56 @@
-const trabalho = require('../modelo/trabalho');
+const Trabalho = require('../modelo/Trabalho');
 
-const controladortrabalho = {
-    createtrabalho: async (req, res) => {
+const controladorTrabalho = {
+    createTrabalho: async (req, res) => {
         try {
-            const novotrabalho = await trabalho.create(req.body);
-            res.json(novotrabalho);
+            const novoTrabalho = await Trabalho.create(req.body);
+            res.json(novoTrabalho);
         } catch (error) {
             res.status(500).send(error.message);
         }
     },
 
-    getAlltrabalho: async (req, res) => {
+    getAllTrabalho: async (req, res) => {
         try {
-            const trabalho = await trabalho.findAll();
-            res.json(trabalho);
+            const Trabalho = await Trabalho.findAll();
+            res.json(Trabalho);
         } catch (error) {
             res.status(500).send(error.message);
         }
     },
 
-    gettrabalhoById: async (req, res) => {
+    getTrabalhoById: async (req, res) => {
         try {
-            const trabalho = await trabalho.findByPk(req.params.id);
-            if (!trabalho) {
+            const Trabalho = await Trabalho.findByPk(req.params.id);
+            if (!Trabalho) {
                 return res.status(404).send('Trabalho não encontrado');
             }
-            res.json(trabalho);
+            res.json(Trabalho);
         } catch (error) {
             res.status(500).send(error.message);
         }
     },
 
-    updatetrabalho: async (req, res) => {
+    updateTrabalho: async (req, res) => {
         try {
-            const trabalho = await trabalho.findByPk(req.params.id);
-            if (!trabalho) {
+            const Trabalho = await Trabalho.findByPk(req.params.id);
+            if (!Trabalho) {
                 return res.status(404).send('Trabalho não encontrado');
             }
-            await trabalho.update(req.body);
+            await Trabalho.update(req.body);
             res.send('Trabalho atualizado com sucesso');
         } catch (error) {
             res.status(500).send(error.message);
         }
     },
 
-    deletetrabalho: async (req, res) => {
+    deleteTrabalho: async (req, res) => {
         try {
-            const trabalho = await trabalho.findByPk(req.params.id);
-            if (!trabalho) {
+            const Trabalho = await Trabalho.findByPk(req.params.id);
+            if (!Trabalho) {
                 return res.status(404).send('Trabalho não encontrado');
             }
-            await trabalho.destroy();
+            await Trabalho.destroy();
             res.send('Trabalho deletado com sucesso');
         } catch (error) {
             res.status(500).send(error.message);
@@ -62,4 +62,4 @@ const controladortrabalho = {
     // ... (a ser implementado)
 };
 
-module.exports = controladortrabalho;
+module.exports = controladorTrabalho;
