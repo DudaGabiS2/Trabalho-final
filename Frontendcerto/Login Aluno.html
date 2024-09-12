@@ -1,118 +1,126 @@
 <html>
-    <head>
-        <style>
-            body{
-                background-image: url('Fundo.jpg');
-                background-size: cover;
-                background-position: center
-            }
 
-           .inicio{
+<head>
+    <style>
+        body {
+            background-image: url('Fundo.jpg');
+            background-size: cover;
+            background-position: center
+        }
+
+        .inicio {
             text-align: center;
             background: local white;
             border-radius: 15px;
             margin: auto;
             margin-top: 14%;
             width: 20%;
-            height:37%;
+            height: 37%;
             font-family: monospace;
-            font-size:x-large;
-        } 
+            font-size: x-large;
+        }
 
-            .b{
-             width: 90%;
-             height: 10%;
-             background-color: rgb(38, 109, 103);
-             color: white;
-             border-radius: 15px;
-             border-color: rgb(38, 109, 103);
-             font-size: x-large;
-            }
-            .c{
-             width: 70%;
-             height: 10%;
-             background-color: white;
-             color: rgb(38, 109, 103);
-             border-radius: 15px;
-             border-color: rgb(38, 109, 103);
-             
-            }
-            p{
-                color: rgb(38, 109, 103);
-                text-align:left;
-                margin-left: 10px;
-                margin-bottom: 5px
-            }
-            h1{
-                background-color: rgb(38, 109, 103); 
-                padding: 20px;
-                margin-top: 4px;
-                border-radius: 15px;
-                color: white
-            }
+        .b {
+            width: 90%;
+            height: 10%;
+            background-color: rgb(38, 109, 103);
+            color: white;
+            border-radius: 15px;
+            border-color: rgb(38, 109, 103);
+            font-size: x-large;
+        }
 
-            input{
-                width: 90%;
-                height: 10%;
-                
-            }
-            .botao{
-                width: 90%;
-             height: 10%;
-             background-color: rgb(38, 109, 103);
-             color: white;
-             border-radius: 15px;
-             border-color: rgb(38, 109, 103);
-             font-size: x-large;  
-            }
+        .c {
+            width: 70%;
+            height: 10%;
+            background-color: white;
+            color: rgb(38, 109, 103);
+            border-radius: 15px;
+            border-color: rgb(38, 109, 103);
 
-        </style>
-    </head>
-    <script>
+        }
+
+        p {
+            color: rgb(38, 109, 103);
+            text-align: left;
+            margin-left: 10px;
+            margin-bottom: 5px
+        }
+
+        h1 {
+            background-color: rgb(38, 109, 103);
+            padding: 20px;
+            margin-top: 4px;
+            border-radius: 15px;
+            color: white
+        }
+
+        input {
+            width: 90%;
+            height: 10%;
+
+        }
+
+        .botao {
+            width: 90%;
+            height: 10%;
+            background-color: rgb(38, 109, 103);
+            color: white;
+            border-radius: 15px;
+            border-color: rgb(38, 109, 103);
+            font-size: x-large;
+        }
+    </style>
+</head>
+<script>
     document.addEventListener('DOMContentLoaded', () => {
-            const loginForm = document.getElementById('loginForm');
-            const messageDiv = document.getElementById('message');
+        const loginForm = document.getElementById('loginForm');
+        const messageDiv = document.getElementById('message');
 
-            // Verifica se o usuário está logado
-            if (localStorage.getItem('loggedIn')) {
-                window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Trabalho%20Final/Frontendcerto/Agenda.html'; // Redireciona para a página de boas-vindas 
-            }
-        
-            loginForm.addEventListener('submit', (event) => {
-                event.preventDefault();
-                const username = document.getElementById('campo_nome').value;
-                const password = document.getElementById('campo_senha').value;
-                
-                fetch('http://localhost:3000/api/alunos', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ username, password }),
-                    })
+        // Verifica se o usuário está logado
+        if (localStorage.getItem('loggedIn')) {
+            window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Trabalho%20Final/Frontendcerto/Agenda.html'; // Redireciona para a página de boas-vindas 
+        }
 
-                if (username === validUsername && password === validPassword) {
+        loginForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const user = document.getElementById('campo_nome').value;
+            const senha = document.getElementById('campo_senha').value;
+
+            fetch('http://localhost:3000/api/alunos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ user, senha }),
+            })
+                .then(response => response.text())
+                .then(data => {
                     localStorage.setItem('loggedIn', 'true');
                     window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Trabalho%20Final/Frontendcerto/Agenda.html';
-                } else {
-                    alert("Nome de usuário ou senha incorretos, ou não encontrados.")
-                }
-            });
+                })
+                .catch(error => {
+                    alert('Nome de usuário ou senha incorretos, ou não encontrados.');
+                    console.error('Erro:', error);
+                });
+        });
     });
-    </script>
-    <body>
-        <div class="inicio">
-            <p> </p>
-            <h1 class="login">Login de Alunos</h1>
-            <form id = loginForm>
-               <p>Usuário</p>
-               <input id = "campo_nome" type = "text">
-               <p>Senha</p>
-                <input id = "campo_senha" type = "password">
-               <P></P>
-               <input class="botao" type="submit" value="Entrar">
-            </form>
-            <div id="message"></div>
-        </div>
-    </body>
+</script>
+
+<body>
+    <div class="inicio">
+        <p> </p>
+        <h1 class="login">Login de Alunos</h1>
+        <form id=loginForm>
+            <p>Usuário</p>
+            <input id="campo_nome" type="text">
+            <p>Senha</p>
+            <input id="campo_senha" type="password">
+            <P></P>
+            <input class="botao" type="submit" value="Entrar">
+        </form>
+        <div id="message"></div>
+    </div>
+</body>
+
 </html>
