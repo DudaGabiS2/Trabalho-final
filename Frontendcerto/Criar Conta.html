@@ -115,14 +115,12 @@
                 },
                 body: JSON.stringify(data)
             })
-
                 .then(response => response.text())
                 .then(data => {
-                    messageDiv.textContent = data;
                     alert(data)
                 })
                 .catch(error => {
-                    allert('Erro ao registrar.');
+                    alert('Erro ao registrar.');
                     console.error('Erro:', error);
                 });
         });
