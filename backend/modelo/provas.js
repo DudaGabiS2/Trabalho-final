@@ -1,6 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const { uniqueId } = require('lodash');
 
 class Provas extends Model {}
 
@@ -33,7 +32,7 @@ Provas.init({
         type: DataTypes.DATE
     },
     turma: {
-        type: DataTypes.DECIMAL
+        type: DataTypes.TEXT
     }
 }, {
     sequelize,
