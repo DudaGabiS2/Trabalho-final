@@ -10,6 +10,24 @@ const ControladorAlunos = {
         }
     },
 
+    loginAluno: async (req, res) => {
+        try {
+            const aluno = await Alunos.findOne({
+                where: {
+                    user: req.body.user
+                }
+            });
+                // Falta conferir se o usuario e senha do aluno sao iguais ao usuario e senha do req.body.user e senha)
+            if (user === user.aluno && senha === senha.aluno) {
+                    return res.status(200).json({ mensagem: 'Login bem-sucedido!' });
+            } else {
+                    return res.status(400).json({ mensagem: 'Usuário ou senha incorretos.' });
+            }
+        } catch (error) {
+            res.status(500).send(error.message);
+        }
+    },
+
     getAllAlunos: async (req, res) => {
         try {
             const alunos = await Alunos.findAll();

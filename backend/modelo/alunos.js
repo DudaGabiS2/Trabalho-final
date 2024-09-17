@@ -1,6 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const { uniqueId } = require('lodash');
 
 class Alunos extends Model {}
 
