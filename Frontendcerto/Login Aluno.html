@@ -5,46 +5,42 @@
         body {
             background-image: url('Fundo.jpg');
             background-size: cover;
-            background-position: center
+            background-position: center;
         }
 
         .inicio {
             text-align: center;
-            background: local white;
-            border-radius: 15px;
+            background: white;
+            border-radius: 16px;
             margin: auto;
-            margin-top: 14%;
+            margin-top: 15%;
             width: 20%;
-            height: 37%;
+            height: 35%;
             font-family: monospace;
             font-size: x-large;
+            box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
         }
 
-        .b {
+        button {
             width: 90%;
-            height: 10%;
+            height: 12%;
             background-color: rgb(38, 109, 103);
             color: white;
             border-radius: 15px;
-            border-color: rgb(38, 109, 103);
+            border: none;
             font-size: x-large;
+            cursor: pointer;
         }
 
-        .c {
-            width: 70%;
-            height: 10%;
-            background-color: white;
-            color: rgb(38, 109, 103);
-            border-radius: 15px;
-            border-color: rgb(38, 109, 103);
-
+        .botao:hover {
+            background-color: rgb(28, 89, 83);
         }
 
         p {
             color: rgb(38, 109, 103);
             text-align: left;
             margin-left: 10px;
-            margin-bottom: 5px
+            margin-bottom: 5px;
         }
 
         h1 {
@@ -52,26 +48,26 @@
             padding: 20px;
             margin-top: 4px;
             border-radius: 15px;
-            color: white
+            color: white;
         }
 
         input {
             width: 90%;
-            height: 10%;
-
+            height: 40px; /* Set a fixed height */
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid rgb(38, 109, 103);
         }
+        label{
 
-        .botao {
-            width: 90%;
-            height: 10%;
-            background-color: rgb(38, 109, 103);
-            color: white;
-            border-radius: 15px;
-            border-color: rgb(38, 109, 103);
-            font-size: x-large;
+            color: rgb(38, 109, 103);
+            text-align:start;
+            margin-left: 10px;
+            margin-bottom: 5px;
         }
     </style>
 </head>
+
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const botao = document.getElementById('botao');
@@ -79,13 +75,18 @@
 
         // Verifica se o usuário está logado
         if (localStorage.getItem('loggedIn')) {
-            window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Frontendcerto/Agenda.html'; // Redireciona para a página de boas-vindas 
+            window.location.href = 'Agenda.html'; // Redireciona para a página de boas-vindas 
         }
 
         botao.addEventListener('click', (event) => {
             event.preventDefault();
-            const user = document.getElementById('campo_nome').value;
-            const senha = document.getElementById('campo_senha').value;
+            const user = document.getElementById('campo_nome').value.trim();
+            const senha = document.getElementById('campo_senha').value.trim();
+
+            if (!user || !senha) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
 
             fetch('http://localhost:3000/api/alunos/login', {
                 method: 'POST',
@@ -94,16 +95,17 @@
                 },
                 body: JSON.stringify({ user, senha }),
             })
-                .then(response => {
-                    
-                    localStorage.setItem('loggedIn', 'true');
-                    window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Frontendcerto/Agenda.html';
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Nome de usuário ou senha incorretos, ou não encontrados.');
                 }
-                )
-                .catch(error => {
-                    alert('Nome de usuário ou senha incorretos, ou não encontrados.');
-                    console.error('Erro:', error);
-                });
+                localStorage.setItem('loggedIn', 'true');
+                window.location.href = 'Agenda.html';
+            })
+            .catch(error => {
+                alert(error.message);
+                console.error('Erro:', error);
+            });
         });
     });
 </script>
@@ -111,12 +113,12 @@
 <body>
     <div class="inicio">
         <h1 class="login">Login de Alunos</h1>
-        <form id=loginForm>
-            <p>Usuário</p>
-            <input id="campo_nome" type="text">
-            <p>Senha</p>
-            <input id="campo_senha" type="password">
-            <P></P>
+        <form id="loginForm">
+            <label for="campo_nome">Usuário</label>
+            <input id="campo_nome" type="text" required>
+            <label for="campo_senha">Senha</label>
+            <input id="campo_senha" type="password" required>
+            <p> </p>
             <button class="botao" id="botao">Entrar</button>
         </form>
         <div id="message"></div>
