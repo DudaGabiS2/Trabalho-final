@@ -143,11 +143,8 @@
 </head> 
 <div id="lista-produtos" class="lista-produtos"></div>
 <script>
-    function redirecionar1() {
-        window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai%20-%20Curso%20Noturno/Reposit%C3%B3rios/Trabalho-final/Frontendcerto/Agenda.html';
-    }
        document.addEventListener('DOMContentLoaded', () => {
-            fetch('http://localhost:3000/api/produtos')
+            fetch('http://localhost:3000/api/trabalhos')
                 .then(response => response.json())
                 .then(produtos => {
                     const listaProdutos = document.getElementById('lista-produtos');
@@ -171,11 +168,9 @@
                 })
         
             })
-   
-  
-  
+
   function redirecionar1() {
-        window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Frontendcerto/Agenda.html';
+        window.location.href = 'Agenda.html';
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -183,7 +178,7 @@
 
     logoutButton.addEventListener('click', () => {
         localStorage.removeItem('loggedIn');
-        window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai%20-%20Curso%20Noturno/Reposit%C3%B3rios/Trabalho-final/Frontendcerto/Login%20Aluno.html'; // Redireciona para a página de login
+        window.location.href = 'Início.html'; // Redireciona para a página de login
     });
 });
 </script>

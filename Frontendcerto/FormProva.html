@@ -39,7 +39,8 @@
              height: 40px;
              background-color: rgb(38, 109, 103);
              border-radius: 15px;
-             color: white}
+             color: white;
+             border: none}
 
         
     </style>
@@ -86,7 +87,7 @@
                     if (response.ok) {
                         return response.json();
                     }
-                    throw new Error('Erro ao cadastrar a prova)
+                    throw new Error('Erro ao cadastrar a prova);
                 })
                 .then(data => {
                     console.log('Prova cadastrada com sucesso:', data);

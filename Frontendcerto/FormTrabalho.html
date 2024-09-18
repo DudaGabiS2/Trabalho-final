@@ -39,7 +39,8 @@
              height: 40px;
              background-color: rgb(38, 109, 103);
              border-radius: 15px;
-             color: white}
+             color: white;
+             border: none}
 
         
     </style>
@@ -116,6 +117,9 @@
                 });
         });
     });
+    function redirecionar1() {
+        window.location.href = 'Tela Professor.html';
+    }
 
 </script>
 </head>
@@ -173,7 +177,7 @@
         <h3 class="l">Disciplina da qual é o trabalho:</h3><p></p>
         <input id="disciplina"><p></p>
         
-        <button class="b" id="botao">Enviar</button>
+        <button class="b" id="botao" onclick="redirecionar1">Enviar</button>
         
 
        
