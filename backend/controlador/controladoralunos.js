@@ -12,13 +12,14 @@ const ControladorAlunos = {
 
     loginAluno: async (req, res) => {
         try {
-            const aluno = await Alunos.findOne({
+            const user = await Alunos.findOne({
                 where: {
-                    user: req.body.user
+                    user: req.body.user,
+                    senha: req.body.senha
                 }
             });
                 // Falta conferir se o usuario e senha do aluno sao iguais ao usuario e senha do req.body.user e senha)
-            if (user === user.aluno && senha === senha.aluno) {
+            if (user.user === req.body.user && user.senha === req.body.senha) {
                     return res.status(200).json({ mensagem: 'Login bem-sucedido!' });
             } else {
                     return res.status(400).json({ mensagem: 'Usuário ou senha incorretos.' });
@@ -53,19 +54,22 @@ const ControladorAlunos = {
         try {
             const alunos = await Alunos.findByPk(req.params.id);
             if (!alunos) {
-                return res.status(404).send('Aluno não encontrado');
+                return res.status(404).json({ mensagem: 'Aluno não encontrado' });
             }
-            await Alunos.update(req.body);
-            res.send('Aluno atualizado com sucesso');
+            await Alunos.update(req.body, {
+                where: { id: req.params.id }
+            });
+            res.json({ mensagem: 'Aluno atualizado com sucesso' });
         } catch (error) {
-            res.status(500).send(error.message);
+            res.status(500).json({ error: error.message });
         }
     },
 
     deleteAlunos: async (req, res) => {
+
         try {
-            const alunos = await Alunos.findByPk(req.params.id);
-            if (!alunos) {
+            const Alunos = await Alunos.findByPk(req.params.id);
+            if (!Alunos) {
                 return res.status(404).send('Aluno não encontrado');
             }
             await Alunos.destroy();
