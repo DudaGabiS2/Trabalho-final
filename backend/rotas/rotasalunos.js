@@ -5,6 +5,9 @@ const ControladorAlunos = require('../controlador/controladoralunos');
 // Rota para criar um novo produto
 router.post('/', ControladorAlunos.createAlunos);
 
+// Rota para login
+router.post('/login', ControladorAlunos.loginAluno);
+
 // Rota para obter todos os produtos
 router.get('/', ControladorAlunos.getAllAlunos);
 
