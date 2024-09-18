@@ -32,7 +32,7 @@ Provas.init({
         type: DataTypes.DATE
     },
     turma: {
-        type: DataTypes.DECIMAL
+        type: DataTypes.TEXT
     }
 }, {
     sequelize,

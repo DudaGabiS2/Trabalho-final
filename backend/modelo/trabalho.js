@@ -23,7 +23,7 @@ Trabalho.init({
         type: DataTypes.STRING
     },
     assunto: {
-        type: DataTypes.STRING
+        type: DataTypes.TEXT
     },
     explicacao: {
         type: DataTypes. TEXT
@@ -46,7 +46,7 @@ Trabalho.init({
         allownull: true
     },
     turma: {
-        type: DataTypes.DECIMAL
+        type: DataTypes.TEXT
     }
 }, {
     sequelize,
