@@ -74,7 +74,7 @@
 </head>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const loginForm = document.getElementById('loginForm');
+        const botao = document.getElementById('botao');
         const messageDiv = document.getElementById('message');
 
         // Verifica se o usuário está logado
@@ -82,23 +82,24 @@
             window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Frontendcerto/Agenda.html'; // Redireciona para a página de boas-vindas 
         }
 
-        loginForm.addEventListener('submit', (event) => {
+        botao.addEventListener('click', (event) => {
             event.preventDefault();
             const user = document.getElementById('campo_nome').value;
             const senha = document.getElementById('campo_senha').value;
 
-            fetch('http://localhost:3000/api/alunos', {
+            fetch('http://localhost:3000/api/alunos/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ user, senha }),
             })
-                .then(response => response.text())
-                .then(data => {
+                .then(response => {
+                    
                     localStorage.setItem('loggedIn', 'true');
                     window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Frontendcerto/Agenda.html';
-                })
+                }
+                )
                 .catch(error => {
                     alert('Nome de usuário ou senha incorretos, ou não encontrados.');
                     console.error('Erro:', error);
@@ -109,7 +110,6 @@
 
 <body>
     <div class="inicio">
-        <p> </p>
         <h1 class="login">Login de Alunos</h1>
         <form id=loginForm>
             <p>Usuário</p>
@@ -117,7 +117,7 @@
             <p>Senha</p>
             <input id="campo_senha" type="password">
             <P></P>
-            <input class="botao" type="submit" value="Entrar">
+            <button class="botao" id="botao">Entrar</button>
         </form>
         <div id="message"></div>
     </div>
