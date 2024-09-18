@@ -52,36 +52,28 @@
         botao.addEventListener('click', (event) => {
             event.preventDefault(); // Previne o comportamento padrão do formulário
 
-            const titulo = document.getElementById('titulo').value;
-            const formato = document.getElementById('formato').value;
-            const cabecalho = document.querySelector('input[name="cabecalho"]:checked').value;
-            const informacoes = document.getElementById('informacoes').value;
-            const assunto = document.getElementById('assunto').value;
-            const explicacao = document.getElementById('explicacao').value;
-            const referencia = document.querySelector('input[name="referencia"]:checked').value;
-            const apresentacao = document.querySelector('input[name="apresentacao"]:checked').value;
-            const detalhes = document.getElementById('detap').value;
-            const dataentrega = document.getElementById('dataentrega').value;
-            const dataap = document.getElementById('dataap').value;
+            const tipo = document.getElementById('tipo').value;
+            const consulta = document.querySelector('input[name="consulta"]:checked').value;
+            const ferramentas = document.querySelector('input[name="ferramentas"]:checked').value;
+            const quaisfer = document.getElementById('quaisfer').value;
+            const especificacoes = document.getElementById('especificacoes').value;
+            const tempo = document.getElementById('tempo').value;
+            const datap = document.getElementById('datap').value;
             const turma = document.getElementById('turma').value;
 
             const data = {
-                tipo: formato,
-                cab: cabecalho,
-                infocab: informacoes,
-                titulo: titulo,
-                assunto: assunto,
-                explicacao: explicacao,
-                referencia: referencia,
-                ap: apresentacao,
-                detap: detalhes,
-                dataentrega: dataentrega,
-                dataap: dataap,
+                tipo: tipo,
+                consulta: consulta,
+                ferramentas: ferramentas,
+                quaisfer: quaisfer,
+                especificacoes: especificacoes,
+                tempo: tempo,
+                data: datap,
                 turma: turma
             }
             console.log(data)
 
-            fetch('http://localhost:3000/api/trabalho', {
+            fetch('http://localhost:3000/api/provas', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -93,20 +85,17 @@
                     if (response.ok) {
                         return response.json();
                     }
-                    throw new Error('Erro ao cadastrar o trabalho');
+                    throw new Error('Erro ao cadastrar a prova);
                 })
                 .then(data => {
-                    console.log('Trabalho cadastrado com sucesso:', data);
+                    console.log('Prova cadastrada com sucesso:', data);
                     // Limpar os campos de entrada após o envio
-                    document.getElementById('titulo').value = '';
-                    document.getElementById('formato').value = '';
-                    document.getElementById('informacoes').value = '';
-                    document.getElementById('assunto').value = '';
-                    document.getElementById('explicacao').value = '';
-                    document.getElementById('detap').value = '';
-                    document.getElementById('dataentrega').value = '';
-                    document.getElementById('dataap').value = '';
-                    document.getElementById('turma').value = ''
+                    document.getElementById('tipo').value = '';
+                    document.getElementById('quaisfer').value = '';
+                    document.getElementById('especificacoes').value = '';
+                    document.getElementById('tempo').value = '';
+                    document.getElementById('datap').value = '';
+                    document.getElementById('turma').value = '';
                 })
                 .catch(error => {
                     console.error('Erro:', error);
@@ -116,6 +105,7 @@
 
     </script>
 </head>
+
 
 <body>
     <div class="div">
@@ -140,13 +130,13 @@
         <input id="quaisfer" type="text" placeholder="Calculadora, dicionário, etc."><p></p>
 
         <h3 style="margin-bottom: 2px">Explicação e detalhes sobre a prova:</h3>
-        <textarea required="" id="assunto" placeholder="Especificações de todos os assuntos a serem abordados na prova e outros detalhes." rows="15" cols="55"></textarea><p></p>
+        <textarea required="" id="especificacoes" placeholder="Especificações de todos os assuntos a serem abordados na prova e outros detalhes." rows="15" cols="55"></textarea><p></p>
 
         <h3 class="l">Tempo para a realização da prova:</h3><p></p>
         <input id="tempo" type="text"><p></p>
 
         <h3 class="l">Data da prova:</h3><p></p>
-        <input id="data" type="date" placeholder="(Caso tenha)"><p></p>
+        <input id="datap" type="date"><p></p>
 
         <h3 class="l">Para quais turmas é a prova:</h3><p></p>
         <input id="turma" placeholder="Ex: 1°1, 2°1, 3°1, etc."><p></p>

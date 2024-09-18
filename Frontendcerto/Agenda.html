@@ -6,100 +6,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+       
+
         body {
+            font-family: 'Courier New', Courier, monospace;
             background-image: url('Fundo2.jpg');
             background-size: cover;
-            background-position: center;
+            background-position: left;
             padding: 0;
             margin: 0;
-        }
-
-
-        .site{
             display: flex;
-
-
-        }
-
-
-        .lateral {
-            background: local rgb(38, 109, 103);
-            width: 250px;
-            min-height: 100vh;
-            float: flex;
-            display: flex;
-            justify-content: flex-start;
             flex-direction: column;
+            align-items: center;
+            overflow: hidden
         }
 
+        .header {
+            text-align: center;
+            width: 2000%;
+            height: 20%;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            font-size: 40px;
+        }
+
+            .lateral {
+            background: rgb(38, 109, 103);
+            width: 300px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            justify-content: flex-start;
+            
+            }
+
+
+
+        .site {
+           display: flex;
+            width: 100%;
+            max-width: 1950px; /* Limita a largura máxima da coluna lateral */
+        
+        }
+
+        
+            
+        
 
         .b {
             width: 100%;
-            padding: 40px;
+            padding: 20px;
             background-color: rgb(38, 109, 103);
             border-radius: 15px;
             border: 1px solid rgb(38, 109, 103);
             font-family: monospace;
-            font-size: x-large;
-            align-items: center;
+            font-size: 30px;
+            margin-bottom: 10px;
         }
-
 
         .b2 {
             width: 100%;
-            padding: 40px;
+            padding: 50px;
             background-color: rgb(46, 136, 128);
             border-radius: 15px;
             border: 1px solid rgb(46, 136, 128);
             font-family: monospace;
-            font-size: x-large;
+            font-size: 30px;
+            margin-bottom: 4px;
         }
 
-
-        .agenda{
-            text-align: center;
-            background: local white;
-            border-radius: 15px;
-            margin: auto;
-            margin-top: 14%;
-            width: 45%;
-            height:50%;
-            font-family: monospace;
-            font-size:x-large;
-            min-height: 50vh;
-        }
-
-
+       
         .b:hover {
             background-color: rgb(46, 136, 128);
         }
-        table {
-            width: 80%;
-            border-collapse: collapse;
-            font-size:x-large;
-            align-items: center;
-            justify-content: flex;
-            margin: auto;
-        }
+
         th, td {
             border: 1px solid #f5f5f5;
-            padding: 8px;
+            padding: 2px;
             text-align: left;
         }
+
         th {
             background-color: #ffffff;
         }
+
         tr:nth-child(even) {
             background-color: #ffffff;
         }
+
     </style>
 </head>
+<<<<<<< HEAD
+=======
 <script>
     function redirecionar1() {
-        window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Trabalho%20Final/Frontendcerto/Agenda.html';
+        window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Frontendcerto/Agenda.html';
     }
     function redirecionar2() {
-        window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Trabalho%20Final/Frontendcerto/Hor%C3%A1rio.html';
+        window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Frontendcerto/Hor%C3%A1rio.html';
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -107,103 +114,47 @@
 
     logoutButton.addEventListener('click', () => {
         localStorage.removeItem('loggedIn');
-        window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Trabalho%20Final/Frontendcerto/Login%20Aluno.html'; // Redireciona para a página de login
+        window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Frontendcerto/In%C3%ADcio.html'; // Redireciona para a página de login
     });
 });
 </script>
 
+>>>>>>> 829ca09323a8a3ffb9ef7cd2982b1eb6ed8230fc
 <body>
+   
+    
     <div class="site">
-        <div class=lateral>
-            <p></p>
-            <p></p>
-            <button class=b2 onclick="redirecionar1()">Agenda</button>
-            <button class=b onclick="redirecionar2()">Horário</button>
-            <button class= b id="logoutButton">Sair</button>
+        
+        <div class="lateral">
+            <button class="b2" onclick="redirecionar1()">Agenda</button>
+            <button class="b" id="logoutButton">Sair</button>
+        </div> 
+        <div class="header">
+            <h1> Provas e Trabalhos</h1>
             
+       
         </div>
-        <div class= agenda>
-            <h1>Agenda:</h1>
-            <h2>Provas e Trabalhos</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Data Entrega</th>
-                            <th>Assunto</th>
-                            <th>Matéria</th>
-                            <th>Professor</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th></th>
-                            <th> </th>  
-                            <th></th>
-                            <th></th>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <th> </th>  
-                            <th></th>
-                            <th></th>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <th> </th>  
-                            <th></th>
-                            <th></th>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <th> </th>  
-                            <th></th>
-                            <th></th>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <th> </th>  
-                            <th></th>
-                            <th></th>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <th> </th>  
-                            <th></th>
-                            <th></th>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <th> </th>  
-                            <th></th>
-                            <th></th>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <th> </th>  
-                            <th></th>
-                            <th></th>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <th> </th>  
-                            <th></th>
-                            <th></th>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <th> </th>  
-                            <th></th>
-                            <th></th>
-                        </tr>
+        <div class="lista">
+            
+                
+                   
+             
 
+    <script>
+        function redirecionar1() {
+            window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Trabalho%20Final/Frontendcerto/Agenda.html';
+        }
+        
 
-                    </tbody>
-                </table>
+        document.addEventListener('DOMContentLoaded', () => {
+            const logoutButton = document.getElementById('logoutButton');
 
-
-        </div>
-    </div>
+            logoutButton.addEventListener('click', () => {
+                localStorage.removeItem('loggedIn');
+                window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Trabalho%20Final/Frontendcerto/Login%20Aluno.html'; // Redireciona para a página de login
+            });
+        });
+    </script>
 </body>
-
-
 </html>
+
