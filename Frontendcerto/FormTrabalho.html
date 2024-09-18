@@ -39,7 +39,8 @@
              height: 40px;
              background-color: rgb(38, 109, 103);
              border-radius: 15px;
-             color: white}
+             color: white;
+             border: none}
 
         
     </style>
@@ -113,6 +114,9 @@
                 });
         });
     });
+    function redirecionar1() {
+        window.location.href = 'Tela Professor.html';
+    }
 
 </script>
 </head>
@@ -167,7 +171,7 @@
         <h3 class="l">Para quais turmas é o trabalho:</h3><p></p>
         <input id="turma" placeholder="Ex: 1°1, 2°1, 3°1, etc."><p></p>
         
-        <button class="b" id="botao">Enviar</button>
+        <button class="b" id="botao" onclick="redirecionar1">Enviar</button>
         
 
        
