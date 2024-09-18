@@ -13,10 +13,11 @@
             border-radius: 15px;
             margin: auto;
             margin-top: 14%;
-            width: 25%;
+            width: 20%;
             height:37%;
             font-family: monospace;
             font-size:x-large;
+            box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
         } 
 
             .b{
@@ -64,55 +65,71 @@
              border-radius: 15px;
              border-color: rgb(38, 109, 103);
              font-size: x-large;  
+             border: none
+            }
+
+                   
+        label{
+
+            color: rgb(38, 109, 103);
+            text-align:start;
+            margin-left: 10px;
+            margin-bottom: 5px;
             }
 
         </style>
     </head>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-                const loginForm = document.getElementById('loginForm');
-                const messageDiv = document.getElementById('message');
-            
-                // Verifica se o usuário está logado
-                if (localStorage.getItem('loggedIn')) {
-                     window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Frontendcerto/Tela%20Professor.html'; // Redireciona para a página de boas-vindas 
-                };
-            
-                loginForm.addEventListener('submit', (event) => {
-                    event.preventDefault();
+         document.addEventListener('DOMContentLoaded', () => {
+        const botao = document.getElementById('botao');
+        const messageDiv = document.getElementById('message');
 
-                    const username = document.getElementById('campo_nome').value;
-                    const password = document.getElementById('campo_senha').value;
-            
-                    fetch('http://localhost:3000/api/professor', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ username, password }),
-                    })
-            
-                    if (username === validUsername && password === validPassword) {
-                        localStorage.setItem('loggedIn', 'true');
-                        window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Frontendcerto/Tela%20Professor.html';
-                    } else {
-                        alert("Nome de usuário ou senha incorretos, ou não encontrados.")
-                    }
-                });
+        // Verifica se o usuário está logado
+        if (localStorage.getItem('loggedIn')) {
+            window.location.href = 'Tela Professor.html'; // Redireciona para a página de boas-vindas 
+        }
+
+        botao.addEventListener('click', (event) => {
+            event.preventDefault();
+            const user = document.getElementById('campo_nome').value.trim();
+            const senha = document.getElementById('campo_senha').value.trim();
+
+            if (!user || !senha) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            fetch('http://localhost:3000/api/professor/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ user, senha }),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Nome de usuário ou senha incorretos, ou não encontrados.');
+                }
+                localStorage.setItem('loggedIn', 'true');
+                window.location.href = 'Tela Professor.html';
+            })
+            .catch(error => {
+                alert(error.message);
+                console.error('Erro:', error);
+            });
         });
+    });
     </script>
     <body>
         <div class="inicio">
-            <p> </p>
-            <h1 class="login">Login de Professor</h1>
-            <form id = "loginForm">
-               <p>Usuário</p>
-               <input id = "campo_nome" type = "text">
-               <p>Senha</p>
-               <input id = "campo_senha" type = "password">
-               <P> </P>
-               <input class="botao" type="submit" value="Entrar">
-               <P></P>
+            <h1 class="login">Login de Professores</h1>
+            <form id="loginForm">
+                <label for="campo_nome">Usuário</label>
+                <input id="campo_nome" type="text" required>
+                <label for="campo_senha">Senha</label>
+                <input id="campo_senha" type="password" required>
+                <p> </p>
+                <button class="botao" id="botao">Entrar</button>
             </form>
             <div id="message"></div>
         </div>
