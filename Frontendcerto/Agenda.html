@@ -8,6 +8,48 @@
     <style>
        
 
+
+
+       .lista-produtos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .cartao-produto {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 200px;
+            padding: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cartao-produto img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+        }
+        
+        .cartao-produto h2 {
+            font-size: 18px;
+            margin: 0 0 10px;
+        }
+        
+        .cartao-produto p {
+            margin: 0;
+            color: #555;
+        }
+        
+        .cartao-produto span {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }        
+
         body {
             font-family: 'Courier New', Courier, monospace;
             background-image: url('Fundo2.jpg');
@@ -99,9 +141,37 @@
 
     </style>
 </head> 
-
+<div id="lista-produtos" class="lista-produtos"></div>
 <script>
-    function redirecionar1() {
+       document.addEventListener('DOMContentLoaded', () => {
+            fetch('http://localhost:3000/api/produtos')
+                .then(response => response.json())
+                .then(produtos => {
+                    const listaProdutos = document.getElementById('lista-produtos');
+                    for(i=0; i<listaProdutos.length; i++){
+                        const produto = listaProdutos[i]
+                        const cartaoProduto = document.createElement('div');
+                        cartaoProduto.className = 'cartao-produto';
+                        
+                        cartaoProduto.innerHTML = `
+                            <img src="https://wx.mlcdn.com.br/ponzi/production/portaldalu/49646.jpg?ims=fit-in/960x" alt="${produto.nome_produto}">
+                            <h2>${produto.nome_produto}</h2>
+                            <p>${produto.descricao}</p>
+                            <span>R$ ${produto.preco}</span>
+                        `;
+                        
+                        listaProdutos.appendChild(cartaoProduto);
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar produtos:', error);
+                })
+        
+            })
+   
+  
+  
+  function redirecionar1() {
         window.location.href = 'file:///C:/Users/SI%20Prudente/Desktop/Senai/Trabalho-final/Trabalho-final/Frontendcerto/Agenda.html';
     }
     function redirecionar2() {
