@@ -20,7 +20,6 @@ Professor.init({
         },
         senha: {
                 type: DataTypes.STRING,
-                unique: true
 
         }
 }, {
