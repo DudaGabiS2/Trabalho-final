@@ -112,16 +112,21 @@
         .b2 {
             width: 100%;
             padding: 50px;
-            background-color: rgb(46, 136, 128);
+            background-color: rgb(38, 109, 103);
             border-radius: 15px;
             border: 1px solid rgb(46, 136, 128);
             font-family: monospace;
             font-size: 30px;
             margin-bottom: 4px;
+            border-color: rgb(38, 109, 103);
         }
 
        
         .b:hover {
+            background-color: rgb(46, 136, 128);
+        }
+
+        .b2:hover {
             background-color: rgb(46, 136, 128);
         }
 
@@ -170,7 +175,7 @@
             })
 
   function redirecionar1() {
-        window.location.href = 'Agenda.html';
+        window.location.href = 'Provas.html';
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -181,6 +186,11 @@
         window.location.href = 'Início.html'; // Redireciona para a página de login
     });
 });
+
+    function redirecionar2() {
+        window.location.href = 'Trabalhos.html';
+    }
+
 </script>
 
 
@@ -190,11 +200,12 @@
     <div class="site">
         
         <div class="lateral">
-            <button class="b2" onclick="redirecionar1()">Agenda</button>
+            <button class="b2" onclick="redirecionar1()">Provas</button>
+            <button class="b2" onclick="redirecionar2()">Trabalhos</button>
             <button class="b" id="logoutButton">Sair</button>
         </div> 
         <div class="header">
-            <h1> Provas e Trabalhos</h1>
+            <h1>Provas Agendadas</h1>
             
        
         </div>
