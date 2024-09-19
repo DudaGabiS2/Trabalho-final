@@ -48,9 +48,8 @@
         document.addEventListener('DOMContentLoaded', () => {
         const botao = document.getElementById('botao');
         const messageDiv = document.getElementById('message');
-        let endpoint;
-
-        botao.addEventListener('click', (event) => {
+        
+            botao.addEventListener('DOMContentLoaded', () => {
             event.preventDefault(); // Previne o comportamento padrão do formulário
 
             const tipo = document.getElementById('tipo').value;
@@ -61,6 +60,7 @@
             const tempo = document.getElementById('tempo').value;
             const datap = document.getElementById('datap').value;
             const turma = document.getElementById('turma').value;
+            const disciplina = document.getElementById('disciplina').value;
 
             const data = {
                 tipo: tipo,
@@ -70,7 +70,8 @@
                 especificacoes: especificacoes,
                 tempo: tempo,
                 data: datap,
-                turma: turma
+                turma: turma,
+                disciplina: disciplina
             }
             console.log(data)
 
@@ -97,16 +98,13 @@
                     document.getElementById('tempo').value = '';
                     document.getElementById('datap').value = '';
                     document.getElementById('turma').value = '';
+                    document.getElementById('disciplina').value = ''
                 })
                 .catch(error => {
                     console.error('Erro:', error);
                 });
         });
     });
-
-    function redirecionar1() {
-        window.location.href = 'Tela Professor.html';
-    }
     </script>
 </head>
 
@@ -145,4 +143,7 @@
         <h3 class="l">Para quais turmas é a prova:</h3><p></p>
         <input id="turma" placeholder="Ex: 1°1, 2°1, 3°1, etc."><p></p>
 
-        <button  class="b" id="botao" onclick="redirecionar1()">Enviar</button>
+        <h3 class="l">Disciplina da qual é a prova:</h3><p></p>
+        <input id="disciplina"><p></p>
+
+        <button  class="b" id="botao">Enviar</button>

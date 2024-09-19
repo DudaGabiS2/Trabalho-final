@@ -47,6 +47,9 @@ Trabalho.init({
     },
     turma: {
         type: DataTypes.TEXT
+    },
+    disciplina: {
+        type: DataTypes.STRING
     }
 }, {
     sequelize,

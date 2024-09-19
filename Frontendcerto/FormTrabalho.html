@@ -65,6 +65,7 @@
             const dataentrega = document.getElementById('dataentrega').value;
             const dataap = document.getElementById('dataap').value;
             const turma = document.getElementById('turma').value;
+            const disciplina = document.getElementById('disciplina').value;
 
             const data = {
                 tipo: formato,
@@ -78,7 +79,8 @@
                 detap: detalhes,
                 dataentrega: dataentrega,
                 dataap: dataap,
-                turma: turma
+                turma: turma,
+                disciplina: disciplina
             }
             console.log(data)
 
@@ -107,7 +109,8 @@
                     document.getElementById('detap').value = '';
                     document.getElementById('dataentrega').value = '';
                     document.getElementById('dataap').value = '';
-                    document.getElementById('turma').value = ''
+                    document.getElementById('turma').value = '';
+                    document.getElementById('disciplina').value = ''
                 })
                 .catch(error => {
                     console.error('Erro:', error);
@@ -170,6 +173,9 @@
 
         <h3 class="l">Para quais turmas é o trabalho:</h3><p></p>
         <input id="turma" placeholder="Ex: 1°1, 2°1, 3°1, etc."><p></p>
+
+        <h3 class="l">Disciplina da qual é o trabalho:</h3><p></p>
+        <input id="disciplina"><p></p>
         
         <button class="b" id="botao" onclick="redirecionar1">Enviar</button>
         

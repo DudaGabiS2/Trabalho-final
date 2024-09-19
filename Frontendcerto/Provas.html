@@ -112,16 +112,21 @@
         .b2 {
             width: 100%;
             padding: 50px;
-            background-color: rgb(46, 136, 128);
+            background-color: rgb(38, 109, 103);
             border-radius: 15px;
             border: 1px solid rgb(46, 136, 128);
             font-family: monospace;
             font-size: 30px;
             margin-bottom: 4px;
+            border-color: rgb(38, 109, 103);
         }
 
        
         .b:hover {
+            background-color: rgb(46, 136, 128);
+        }
+
+        .b2:hover {
             background-color: rgb(46, 136, 128);
         }
 
@@ -142,35 +147,40 @@
     </style>
 </head> 
 <div id="lista-produtos" class="lista-produtos"></div>
-<script>
-       document.addEventListener('DOMContentLoaded', () => {
-            fetch('http://localhost:3000/api/produtos')
-                .then(response => response.json())
-                .then(produtos => {
-                    const listaProdutos = document.getElementById('lista-produtos');
-                    for(i=0; i<listaProdutos.length; i++){
-                        const produto = listaProdutos[i]
-                        const cartaoProduto = document.createElement('div');
-                        cartaoProduto.className = 'cartao-produto';
-                        
-                        cartaoProduto.innerHTML = `
-                            <img src="https://wx.mlcdn.com.br/ponzi/production/portaldalu/49646.jpg?ims=fit-in/960x" alt="${produto.nome_produto}">
-                            <h2>${produto.nome_produto}</h2>
-                            <p>${produto.descricao}</p>
-                            <span>R$ ${produto.preco}</span>
-                        `;
-                        
-                        listaProdutos.appendChild(cartaoProduto);
-                    }
-                })
-                .catch(error => {
-                    console.error('Erro ao buscar produtos:', error);
-                })
-        
+<SCRIPT>
+    document.addEventListener('DOMContentLoaded', () => {
+         fetch('http://localhost:3000/api/trabalhos')
+             .then(response => response.json())
+             .then(trabalhos => {
+                 const listatrabalhos = document.getElementById('listatrabalhos');
+                 for(i=0; i<listatrabalhos.length; i++){
+                     const trabalho = listatrabalhos[i]
+                     const cartaotrabalho = document.createElement('div');
+                     cartaotrabalho.className = 'cartaotrabalho';
+                     
+                     cartaotrabalho.innerHTML = `
+                         <h2>Título do trabalho: ${trabalho.titulo}</h2>
+                         <p>Tipo do trabalho: ${trabalho.tipo}</p>
+                         <p>Precisa de cabeçalho: ${trabalho.cab}</p>
+                         <p>Informações do cabeçalho: ${trabalho.infocab}</p>
+                         <p>Assunto do trabalho: ${trabalho.assunto}</p>
+                         <p>Referências de pesquisa do trabalho: ${trabalho.referencia}</p>
+                         <p>Detalhes da apresentação: ${trabalho.detalheapre}</p>
+                         <p>Data de entrega: ${trabalho.dataentrega}</p>
+                         <p>Data de apresentação: ${trabalho.dataapresentacao}</p>
+                         <p>Para quais turmas é o trabalho: ${trabalho.turmas}</p>
+                         `;
+                     
+                     listatrabalhos.appendChild(cartaotrabalho);
+                 }
+    })
+             .catch(error => {
+                 console.error('Erro ao buscar trabalhos', error);
+             })
             })
 
   function redirecionar1() {
-        window.location.href = 'Agenda.html';
+        window.location.href = 'Provas.html';
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -181,6 +191,11 @@
         window.location.href = 'Início.html'; // Redireciona para a página de login
     });
 });
+
+    function redirecionar2() {
+        window.location.href = 'Trabalhos.html';
+    }
+
 </script>
 
 
@@ -190,11 +205,12 @@
     <div class="site">
         
         <div class="lateral">
-            <button class="b2" onclick="redirecionar1()">Agenda</button>
+            <button class="b2" onclick="redirecionar1()">Provas</button>
+            <button class="b2" onclick="redirecionar2()">Trabalhos</button>
             <button class="b" id="logoutButton">Sair</button>
         </div> 
         <div class="header">
-            <h1> Provas e Trabalhos</h1>
+            <h1>Provas Agendadas</h1>
             
        
         </div>
