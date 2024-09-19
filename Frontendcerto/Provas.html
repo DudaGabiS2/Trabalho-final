@@ -146,29 +146,29 @@
 
     </style>
 </head> 
-<div id="lista-produtos" class="lista-produtos"></div>
+<div id="listaprovas" class="listaprovas"></div>
 <SCRIPT>
     document.addEventListener('DOMContentLoaded', () => {
          fetch('http://localhost:3000/api/trabalhos')
              .then(response => response.json())
-             .then(trabalhos => {
-                 const listatrabalhos = document.getElementById('listatrabalhos');
-                 for(i=0; i<listatrabalhos.length; i++){
-                     const trabalho = listatrabalhos[i]
-                     const cartaotrabalho = document.createElement('div');
-                     cartaotrabalho.className = 'cartaotrabalho';
+             .then(provas => {
+                 const listaprovas = document.getElementById('listaprovas');
+                 for(i=0; i<listaprovas.length; i++){
+                     const prova = listaprovas[i]
+                     const cartaoprova = document.createElement('div');
+                     cartaoprova.className = 'cartaoprova';
                      
                      cartaotrabalho.innerHTML = `
-                         <h2>Título do trabalho: ${trabalho.titulo}</h2>
-                         <p>Tipo do trabalho: ${trabalho.tipo}</p>
-                         <p>Precisa de cabeçalho: ${trabalho.cab}</p>
-                         <p>Informações do cabeçalho: ${trabalho.infocab}</p>
-                         <p>Assunto do trabalho: ${trabalho.assunto}</p>
-                         <p>Referências de pesquisa do trabalho: ${trabalho.referencia}</p>
-                         <p>Detalhes da apresentação: ${trabalho.detalheapre}</p>
-                         <p>Data de entrega: ${trabalho.dataentrega}</p>
-                         <p>Data de apresentação: ${trabalho.dataapresentacao}</p>
-                         <p>Para quais turmas é o trabalho: ${trabalho.turmas}</p>
+                         <h2>: ${trabalho.titulo}</h2>
+                         <p>Tipo da prova: ${prova.tipo}</p>
+                         <p>Pode consultar materiais de pesquisa: ${prova.consulta}</p>
+                         <p>Pode usar ferramentas: ${prova.ferramentas}</p>
+                         <p>Se sim, quais (ferramentas): ${prova.ferramentas}</p>
+                         <p>Detalhes sobre a prova: ${prova.detalhes}</p>
+                         <p>Tempo de prova: ${prova.tempo}</p>
+                         <p>Data da prova: ${prova.dataentrega}</p>
+                         <p>Para quais turmas é a prova: ${prova.turmas}</p>
+                         <p>Disciplina da prova: ${prova.disciplina}</p>
                          `;
                      
                      listatrabalhos.appendChild(cartaotrabalho);
