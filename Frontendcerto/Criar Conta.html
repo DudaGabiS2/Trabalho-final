@@ -99,14 +99,14 @@
             }
             console.log(data)
 
-        if (data.role === 'student') {
-            endpoint = 'http://localhost:3000/api/alunos';
-        } else if (data.role === 'teacher') {
-            endpoint = 'http://localhost:3000/api/professor';
-        } else {
-            messageDiv.textContent = 'Não Encontrado.';
-            return;
-        }
+            if (data.role === 'student') {
+                endpoint = 'http://localhost:3000/api/alunos';
+            } else if (data.role === 'teacher') {
+                endpoint = 'http://localhost:3000/api/professor';
+            } else {
+                messageDiv.textContent = 'Não Encontrado.';
+                return;
+            }
 
             fetch(endpoint, {
                 method: 'POST',
@@ -115,9 +115,15 @@
                 },
                 body: JSON.stringify(data)
             })
-                .then(response => response.text())
-                .then(data => {
-                    alert(data)
+                .then(response => () => {
+                    if (!response.ok) {
+                        alert('Erro ao registrar')
+                    }
+                    return response.json()
+                })
+                .then(pessoa => () => {
+                    alert('Conta criada com sucesso!')
+                    redirecionar1();
                 })
                 .catch(error => {
                     alert('Erro ao registrar.');
@@ -129,10 +135,10 @@
         window.location.href = 'Início.html';
     }
     });
-
     function redirecionar1() {
-                window.location.href = 'Início.html';
-    }
+        window.location.href = 'Início.html';
+    };
+
 </script>
 
 <body>
