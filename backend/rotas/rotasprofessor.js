@@ -5,6 +5,9 @@ const ProfessorController = require('../controlador/professorController');
 // Rota para criar um novo produto
 router.post('/', ProfessorController.createProfessor);
 
+// Rota para login
+router.post('/login', ProfessorController.loginProfessor);
+
 // Rota para obter todos os produtos
 router.get('/', ProfessorController.getAllProfessor);
 

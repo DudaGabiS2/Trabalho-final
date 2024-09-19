@@ -11,6 +11,25 @@ const ProfessorController = {
         }
     },
 
+    loginProfessor: async (req, res) => {
+        try {
+            const user = await Professor.findOne({
+                where: {
+                    user: req.body.user,
+                    senha: req.body.senha
+                }
+            });
+                // Falta conferir se o usuario e senha do aluno sao iguais ao usuario e senha do req.body.user e senha)
+            if (user.user === req.body.user && user.senha === req.body.senha) {
+                    return res.status(200).json({ mensagem: 'Login bem-sucedido!' });
+            } else {
+                    return res.status(400).json({ mensagem: 'Usuário ou senha incorretos.' });
+            }
+        } catch (error) {
+            res.status(500).send(error.message);
+        }
+    },
+
     getAllProfessor: async (req, res) => {
         try {
             const Professor = await Professor.findAll();
