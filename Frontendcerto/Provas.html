@@ -146,38 +146,37 @@
 
     </style>
 </head> 
-<div id="listatrabalhos" class="listatrabalhos"></div>
-<script>
-       document.addEventListener('DOMContentLoaded', () => {
-            fetch('http://localhost:3000/api/trabalhos')
-                .then(response => response.json())
-                .then(trabalhos => {
-                    const listatrabalhos = document.getElementById('listatrabalhos');
-                    for(i=0; i<listatrabalhos.length; i++){
-                        const trabalho = listatrabalhos[i]
-                        const cartaotrabalho = document.createElement('div');
-                        cartaotrabalho.className = 'cartaotrabalho';
-                        
-                        cartaotrabalho.innerHTML = `
-                            <h2>Título do trabalho: ${trabalho.titulo}</h2>
-                            <p>Tipo do trabalho: ${trabalho.tipo}</p>
-                            <p>Precisa de cabeçalho: ${trabalho.cab}</p>
-                            <p>Informações do cabeçalho: ${trabalho.infocab}</p>
-                            <p>Assunto do trabalho: ${trabalho.assunto}</p>
-                            <p>Referências de pesquisa do trabalho: ${trabalho.referencia}</p>
-                            <p>Detalhes da apresentação: ${trabalho.detalheapre}</p>
-                            <p>Data de entrega: ${trabalho.dataentrega}</p>
-                            <p>Data de apresentação: ${trabalho.dataapresentacao}</p>
-                            <p>Para quais turmas é o trabalho: ${trabalho.turmas}</p>
-                            `;
-                        
-                        listatrabalhos.appendChild(cartaotrabalho);
-                    }
-                })
-                .catch(error => {
-                    console.error('Erro ao buscar trabalhos', error);
-                })
-        
+<div id="lista-produtos" class="lista-produtos"></div>
+<SCRIPT>
+    document.addEventListener('DOMContentLoaded', () => {
+         fetch('http://localhost:3000/api/trabalhos')
+             .then(response => response.json())
+             .then(trabalhos => {
+                 const listatrabalhos = document.getElementById('listatrabalhos');
+                 for(i=0; i<listatrabalhos.length; i++){
+                     const trabalho = listatrabalhos[i]
+                     const cartaotrabalho = document.createElement('div');
+                     cartaotrabalho.className = 'cartaotrabalho';
+                     
+                     cartaotrabalho.innerHTML = `
+                         <h2>Título do trabalho: ${trabalho.titulo}</h2>
+                         <p>Tipo do trabalho: ${trabalho.tipo}</p>
+                         <p>Precisa de cabeçalho: ${trabalho.cab}</p>
+                         <p>Informações do cabeçalho: ${trabalho.infocab}</p>
+                         <p>Assunto do trabalho: ${trabalho.assunto}</p>
+                         <p>Referências de pesquisa do trabalho: ${trabalho.referencia}</p>
+                         <p>Detalhes da apresentação: ${trabalho.detalheapre}</p>
+                         <p>Data de entrega: ${trabalho.dataentrega}</p>
+                         <p>Data de apresentação: ${trabalho.dataapresentacao}</p>
+                         <p>Para quais turmas é o trabalho: ${trabalho.turmas}</p>
+                         `;
+                     
+                     listatrabalhos.appendChild(cartaotrabalho);
+                 }
+    })
+             .catch(error => {
+                 console.error('Erro ao buscar trabalhos', error);
+             })
             })
 
   function redirecionar1() {
