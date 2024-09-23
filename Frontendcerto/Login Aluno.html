@@ -76,7 +76,7 @@
 
         // Verifica se o usuário está logado
         if (localStorage.getItem('loggedIn')) {
-            window.location.href = 'Agenda.html'; // Redireciona para a página de boas-vindas 
+            window.location.href = 'Tela Aluno.html'; // Redireciona para a página de boas-vindas 
         }
 
         botao.addEventListener('click', (event) => {
@@ -101,7 +101,7 @@
                     throw new Error('Nome de usuário ou senha incorretos, ou não encontrados.');
                 }
                 localStorage.setItem('loggedIn', 'true');
-                window.location.href = 'Agenda.html';
+                window.location.href = 'Tela Aluno.html';
             })
             .catch(error => {
                 alert(error.message);

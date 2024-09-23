@@ -1,0 +1,139 @@
+<html lang="pt-BR"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+       
+        .criar{  
+            border-collapse: collapse;
+            text-align: center;
+            background: local  rgb(255, 255, 255);
+            border-radius: 80px;
+            margin: auto;
+            margin-top: 10%;
+            width: 50%;
+            height:60%;
+            font-family: monospace;
+            font-size:x-large;
+            line-height: 400%;
+            align-items: center;
+     
+        }
+        body{    
+                background-image: url('Fundo3.jpg');
+                background-size: cover;
+                background-position: center;
+                padding: 0;
+                margin: 0;
+                line-height: 400%;
+               
+        }
+        .b3 {
+            width: 25%;
+            padding: 40px;
+            background-color:  rgb(248, 248, 248);
+            border-radius: 15px;
+            border: 1px solid  rgb(248, 248, 248);
+            font-family: monospace;
+            font-size: x-large;
+        }
+        .b3:hover{
+            background-color: azure;
+        }
+        .b:hover{
+            background-color: rgb(46, 136, 128);
+        }
+        .site{
+            display: flex;
+
+
+        }
+
+
+        .lateral {
+            background: local rgb(38, 109, 103);
+            width: 250px;
+            min-height: 100vh;
+            float: flex;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+        }
+
+
+        .b {
+            width: 100%;
+            padding: 40px;
+            background-color: rgb(38, 109, 103);
+            border-radius: 15px;
+            border: 1px solid rgb(38, 109, 103);
+            font-family: monospace;
+            font-size: x-large;
+            align-items: center;
+        }
+        .b2 {
+            width: 100%;
+            padding: 50px;
+            background-color: rgb(38, 109, 103);
+            border-radius: 15px;
+            border: 1px solid rgb(46, 136, 128);
+            font-family: monospace;
+            font-size: 30px;
+            margin-bottom: 4px;
+            border-color: rgb(38, 109, 103);
+            font-size: x-large
+        }
+
+       
+        .b:hover {
+            background-color: rgb(46, 136, 128);
+        }
+
+        .b2:hover {
+            background-color: rgb(46, 136, 128);
+        }
+    </style>
+    <script>
+        function redirecionar1() {
+            window.location.href = 'FormProva.html';
+        }
+        function redirecionar2() {
+            window.location.href = 'FormTrabalho.html';
+        }
+        function redirecionar3() {
+            window.location.href = 'Tela Aluno.html';
+        }
+        
+    document.addEventListener('DOMContentLoaded', () => {
+    const logoutButton = document.getElementById('logoutButton');
+
+    logoutButton.addEventListener('click', () => {
+        localStorage.removeItem('loggedIn');
+        window.location.href = 'Início.html'; // Redireciona para a página de login
+    });
+});
+    function redirecionar1() {
+        window.location.href = 'Provas.html';
+    }
+    function redirecionar2() {
+        window.location.href = 'Trabalhos.html';
+    }
+    </script>
+    <body>
+        <div class="site">
+                <div class=lateral>
+                    <p></p>
+                    <button class="b2" onclick="redirecionar3()">Início</button>
+                    <button class="b2" onclick="redirecionar1()">Provas</button>
+                    <button class="b2" onclick="redirecionar2()">Trabalhos</button>
+                    <button class= b id="logoutButton">Sair</button> 
+                </div>
+            <div class = criar>
+            
+            <h1>Bem-Vindo Aluno(a)!</h1>
+            <p>Aqui você pode ver as Provas e Trabalhos agendados pelos Professores.</p>
+            <p></p>
+        </div>
+    </body>
+</head>
+</html>

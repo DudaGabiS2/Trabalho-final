@@ -47,7 +47,7 @@
 
     body {
         font-family: 'Courier New', Courier, monospace;
-        background-image: url('Fundo2.jpg');
+        background-image: url('Fundo3.jpg');
         background-size: cover;
         background-position: left;
         padding: 0;
@@ -70,14 +70,13 @@
     }
 
         .lateral {
-        background: rgb(38, 109, 103);
         width: 300px;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
         padding: 10px;
         justify-content: flex-start;
-        
+        background: local rgb(38, 109, 103);
         }
 
 
@@ -102,6 +101,7 @@
         font-family: monospace;
         font-size: 30px;
         margin-bottom: 10px;
+        font-size: x-large;
     }
 
     .b2 {
@@ -114,6 +114,7 @@
         font-size: 30px;
         margin-bottom: 4px;
         border-color: rgb(38, 109, 103);
+        font-size: x-large;
     }
 
    
@@ -190,6 +191,10 @@ logoutButton.addEventListener('click', () => {
 function redirecionar2() {
     window.location.href = 'Trabalhos.html';
 }
+function redirecionar3() {
+            window.location.href = 'Tela Aluno.html';
+        }
+        
 
 </script>
 
@@ -207,6 +212,7 @@ function redirecionar2() {
 <div class="site">
     
     <div class="lateral">
+        <button class="b2" onclick="redirecionar3()">Início</button>
         <button class="b2" onclick="redirecionar1()">Provas</button>
         <button class="b2" onclick="redirecionar2()">Trabalhos</button>
         <button class="b" id="logoutButton">Sair</button>
