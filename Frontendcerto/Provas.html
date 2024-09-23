@@ -10,7 +10,7 @@
 
 
 
-       .lista-produtos {
+       .listaprovas {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
@@ -159,7 +159,7 @@
                      cartaoprova.className = 'cartaoprova';
                      
                      cartaotrabalho.innerHTML = `
-                         <h2>: ${trabalho.titulo}</h2>
+                         <h2>: ${prova.titulo}</h2>
                          <p>Tipo da prova: ${prova.tipo}</p>
                          <p>Pode consultar materiais de pesquisa: ${prova.consulta}</p>
                          <p>Pode usar ferramentas: ${prova.ferramentas}</p>
@@ -171,11 +171,11 @@
                          <p>Disciplina da prova: ${prova.disciplina}</p>
                          `;
                      
-                     listatrabalhos.appendChild(cartaotrabalho);
+                     listatrabalhos.appendChild(cartaoprova);
                  }
     })
              .catch(error => {
-                 console.error('Erro ao buscar trabalhos', error);
+                 console.error('Erro ao buscar provas', error);
              })
             })
 
