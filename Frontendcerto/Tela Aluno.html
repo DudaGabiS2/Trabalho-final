@@ -20,14 +20,23 @@
      
         }
         body{    
-                background-image: url('Fundo3.jpg');
-                background-size: cover;
-                background-position: center;
-                padding: 0;
-                margin: 0;
-                line-height: 400%;
-               
+            background-image: url('Fundo3.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 0;
+            margin: 0;
+    
         }
+        .lateral {
+        width: 250px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+        justify-content: flex-start;
+        background: local rgb(38, 109, 103);
+        }
+
         .b3 {
             width: 25%;
             padding: 40px;
@@ -45,25 +54,26 @@
         }
         .site{
             display: flex;
-
+            width: 100%;
+        max-width: 1950px; /* Limita a largura máxima da coluna lateral */
 
         }
 
 
         .lateral {
-            background: local rgb(38, 109, 103);
-            width: 250px;
-            min-height: 100vh;
-            float: flex;
-            display: flex;
-            justify-content: flex-start;
-            flex-direction: column;
+        width: 250px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        justify-content: flex-start;
+        background: local rgb(38, 109, 103);
         }
 
 
         .b {
             width: 100%;
-            padding: 40px;
+            padding: 20px;
             background-color: rgb(38, 109, 103);
             border-radius: 15px;
             border: 1px solid rgb(38, 109, 103);
