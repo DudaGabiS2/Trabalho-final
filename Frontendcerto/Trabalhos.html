@@ -155,16 +155,19 @@
                      cartaotrabalho.className = 'cartaotrabalho';
                      
                      cartaotrabalho.innerHTML = `
-                         <h2>Título do trabalho: ${trabalho.titulo}</h2>
-                         <p>Tipo do trabalho: ${trabalho.tipo}</p>
-                         <p>Precisa de cabeçalho: ${trabalho.cab}</p>
-                         <p>Informações do cabeçalho: ${trabalho.infocab}</p>
-                         <p>Assunto do trabalho: ${trabalho.assunto}</p>
-                         <p>Referências de pesquisa do trabalho: ${trabalho.referencia}</p>
-                         <p>Detalhes da apresentação: ${trabalho.detalheapre}</p>
-                         <p>Data de entrega: ${trabalho.dataentrega}</p>
-                         <p>Data de apresentação: ${trabalho.dataapresentacao}</p>
-                         <p>Para quais turmas é o trabalho: ${trabalho.turmas}</p>
+                         <h2>Título do trabalho: ${trabalhos.titulo}</h2>
+                         <p>Tipo do trabalho: ${trabalhos.tipo}</p>
+                         <p>Precisa de cabeçalho: ${trabalhos.cab}</p>
+                         <p>Informações do cabeçalho: ${trabalhos.infocab}</p>
+                         <p>Assunto do trabalho: ${trabalhos.assunto}</p>
+                         <p>Explicação e detalhes sobre o trabalho: ${trabalhos.explicacao}</p>
+                         <p>Necessário informar referência: ${trabalhos.referencia}</p>
+                         <p>Precisará de apresentação: ${trabalhos.ap}</p>
+                         <p>Detalhes da apresentação: ${trabalhos.detap}</p>
+                         <p>Data de entrega: ${trabalhos.dataentrega}</p>
+                         <p>Data de apresentação: ${trabalhos.dataap}</p>
+                         <p>Para quais turmas é o trabalho: ${trabalhos.turma}</p>
+                         <p>Matéria do trabalho: ${trabalhos.disciplina}</p>
                          `;
                      
                      listatrabalhos.appendChild(cartaotrabalho);
