@@ -20,13 +20,12 @@
      
         }
         body{    
-                background-image: url('Fundo3.jpg');
-                background-size: cover;
-                background-position: center;
-                padding: 0;
-                margin: 0;
-                line-height: 400%;
-               
+            background-image: url('Fundo3.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 0;
+            margin: 0;
+    
         }
         .b3 {
             width: 25%;
@@ -37,33 +36,30 @@
             font-family: monospace;
             font-size: x-large;
         }
-        .b3:hover{
-            background-color: azure;
-        }
-        .b:hover{
-            background-color: rgb(46, 136, 128);
-        }
+
         .site{
             display: flex;
-
-
+            width: 100%;
+        max-width: 1950px; /* Limita a largura máxima da coluna lateral */
+        }
+        h1 {
+            font-family: 'Courier New', Courier, monospace;
         }
 
-
         .lateral {
-            background: local rgb(38, 109, 103);
-            width: 250px;
-            min-height: 100vh;
-            float: flex;
-            display: flex;
-            justify-content: flex-start;
-            flex-direction: column;
+        width: 200px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        justify-content: flex-start;
+        background: local rgb(38, 109, 103);
         }
 
 
         .b {
             width: 100%;
-            padding: 40px;
+            padding: 20px;
             background-color: rgb(38, 109, 103);
             border-radius: 15px;
             border: 1px solid rgb(38, 109, 103);
@@ -76,7 +72,7 @@
             padding: 50px;
             background-color: rgb(38, 109, 103);
             border-radius: 15px;
-            border: 1px solid rgb(46, 136, 128);
+            border: 2px solid rgb(38, 109, 103);
             font-family: monospace;
             font-size: 30px;
             margin-bottom: 4px;
@@ -128,8 +124,9 @@
                     <button class="b2" onclick="redirecionar2()">Trabalhos</button>
                     <button class= b id="logoutButton">Sair</button> 
                 </div>
-            <div class = criar>
-            
+            <div>
+        </div>
+        <div class = criar> 
             <h1>Bem-Vindo Aluno(a)!</h1>
             <p>Aqui você pode ver as Provas e Trabalhos agendados pelos Professores.</p>
             <p></p>
