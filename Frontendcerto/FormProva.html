@@ -48,8 +48,9 @@
         document.addEventListener('DOMContentLoaded', () => {
         const botao = document.getElementById('botao');
         const messageDiv = document.getElementById('message');
-        
-            botao.addEventListener('DOMContentLoaded', () => {
+        let endpoint;
+
+            botao.addEventListener('click', (event) => {
             event.preventDefault(); // Previne o comportamento padrão do formulário
 
             const tipo = document.getElementById('tipo').value;
@@ -87,7 +88,7 @@
                     if (response.ok) {
                         return response.json();
                     }
-                    throw new Error('Erro ao cadastrar a prova);
+                    throw new Error('Erro ao cadastrar a prova');
                 })
                 .then(data => {
                     console.log('Prova cadastrada com sucesso:', data);

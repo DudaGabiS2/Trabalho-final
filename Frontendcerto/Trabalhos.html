@@ -6,14 +6,14 @@
 
 
 
-   .lista-produtos {
+   .lista-trabalhos {
         display: flex;
         flex-wrap: wrap;
         gap: 20px;
         justify-content: center;
     }
     
-    .cartao-produto {
+    .cartao-trabalho {
         background-color: #fff;
         border: 1px solid #ddd;
         border-radius: 8px;
@@ -22,24 +22,24 @@
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     
-    .cartao-produto img {
+    .cartao-trabalho img {
         width: 100%;
         height: auto;
         border-bottom: 1px solid #ddd;
         padding-bottom: 15px;
     }
     
-    .cartao-produto h2 {
+    .cartao-trabalho h2 {
         font-size: 18px;
         margin: 0 0 10px;
     }
     
-    .cartao-produto p {
+    .cartao-trabalho p {
         margin: 0;
         color: #555;
     }
     
-    .cartao-produto span {
+    .cartao-trabalho span {
         display: block;
         margin-top: 10px;
         font-weight: bold;
@@ -143,19 +143,19 @@
 
 </style>
 </head> 
-<div id="lista-produtos" class="lista-produtos"></div>
+<div id="lista-trabalhos" class="lista-trabalhos"></div>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-         fetch('http://localhost:3000/api/trabalhos')
+         fetch('http://localhost:3000/api/trabalho')
              .then(response => response.json())
              .then(trabalhos => {
-                 const listatrabalhos = document.getElementById('listatrabalhos');
-                 for(i=0; i<listatrabalhos.length; i++){
-                     const trabalho = listatrabalhos[i]
-                     const cartaotrabalho = document.createElement('div');
-                     cartaotrabalho.className = 'cartaotrabalho';
+                 const listaTrabalhos = document.getElementById('lista-trabalhos');
+                 for(i=0; i<trabalho.length; i++){
+                     const trabalhos = listaTrabalhos[i]
+                     const cartaoTrabalho = document.createElement('div');
+                     cartaoTrabalho.className = 'cartao-trabalho';
                      
-                     cartaotrabalho.innerHTML = `
+                     cartaoTrabalho.innerHTML = `
                          <h2>Título do trabalho: ${trabalhos.titulo}</h2>
                          <p>Tipo do trabalho: ${trabalhos.tipo}</p>
                          <p>Precisa de cabeçalho: ${trabalhos.cab}</p>
@@ -171,7 +171,7 @@
                          <p>Matéria do trabalho: ${trabalhos.disciplina}</p>
                          `;
                      
-                     listatrabalhos.appendChild(cartaotrabalho);
+                     listatrabalhos.appendChild(cartaoTrabalho);
                  }
     })
              .catch(error => {

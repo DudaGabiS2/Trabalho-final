@@ -12,8 +12,8 @@ const controladorProvas = {
 
     getAllProvas: async (req, res) => {
         try {
-            const Provas = await Provas.findAll();
-            res.json(Provas);
+            const provas = await Provas.findAll();
+            res.json(provas);
         } catch (error) {
             res.status(500).send(error.message);
         }
@@ -21,11 +21,11 @@ const controladorProvas = {
 
     getProvaById: async (req, res) => {
         try {
-            const Provas = await Provas.findByPk(req.params.id);
-            if (!Provas) {
+            const provas = await Provas.findByPk(req.params.id);
+            if (!provas) {
                 return res.status(404).send('Prova não encontrada');
             }
-            res.json(Provas);
+            res.json(provas);
         } catch (error) {
             res.status(500).send(error.message);
         }
@@ -33,11 +33,11 @@ const controladorProvas = {
 
     updateProva: async (req, res) => {
         try {
-            const Provas = await Provas.findByPk(req.params.id);
-            if (!Provas) {
+            const provas = await Provas.findByPk(req.params.id);
+            if (!provas) {
                 return res.status(404).send('Prova não encontrada');
             }
-            await Provas.update(req.body);
+            await provas.update(req.body);
             res.send('Prova atualizada com sucesso');
         } catch (error) {
             res.status(500).send(error.message);
@@ -46,11 +46,11 @@ const controladorProvas = {
 
     deleteProva: async (req, res) => {
         try {
-            const Provas = await Provas.findByPk(req.params.id);
-            if (!Provas) {
+            const provas = await Provas.findByPk(req.params.id);
+            if (!provas) {
                 return res.status(404).send('Prova não encontrada');
             }
-            await Provas.destroy();
+            await provas.destroy();
             res.send('Prova deletada com sucesso');
         } catch (error) {
             res.status(500).send(error.message);
