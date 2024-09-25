@@ -12,8 +12,8 @@ const controladorTrabalho = {
 
     getAllTrabalho: async (req, res) => {
         try {
-            const Trabalho = await Trabalho.findAll();
-            res.json(Trabalho);
+            const trabalho = await Trabalho.findAll();
+            res.json(trabalho);
         } catch (error) {
             res.status(500).send(error.message);
         }
@@ -21,11 +21,11 @@ const controladorTrabalho = {
 
     getTrabalhoById: async (req, res) => {
         try {
-            const Trabalho = await Trabalho.findByPk(req.params.id);
-            if (!Trabalho) {
+            const trabalho = await Trabalho.findByPk(req.params.id);
+            if (!trabalho) {
                 return res.status(404).send('Trabalho não encontrado');
             }
-            res.json(Trabalho);
+            res.json(trabalho);
         } catch (error) {
             res.status(500).send(error.message);
         }
@@ -33,11 +33,11 @@ const controladorTrabalho = {
 
     updateTrabalho: async (req, res) => {
         try {
-            const Trabalho = await Trabalho.findByPk(req.params.id);
-            if (!Trabalho) {
+            const trabalho = await Trabalho.findByPk(req.params.id);
+            if (!trabalho) {
                 return res.status(404).send('Trabalho não encontrado');
             }
-            await Trabalho.update(req.body);
+            await trabalho.update(req.body);
             res.send('Trabalho atualizado com sucesso');
         } catch (error) {
             res.status(500).send(error.message);
@@ -46,11 +46,11 @@ const controladorTrabalho = {
 
     deleteTrabalho: async (req, res) => {
         try {
-            const Trabalho = await Trabalho.findByPk(req.params.id);
-            if (!Trabalho) {
+            const trabalho = await Trabalho.findByPk(req.params.id);
+            if (!trabalho) {
                 return res.status(404).send('Trabalho não encontrado');
             }
-            await Trabalho.destroy();
+            await trabalho.destroy();
             res.send('Trabalho deletado com sucesso');
         } catch (error) {
             res.status(500).send(error.message);

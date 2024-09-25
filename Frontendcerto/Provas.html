@@ -11,40 +11,44 @@
 
 
 
-       .listaprovas {
+       .lista-provas {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
             justify-content: center;
+            padding: 5px;
         }
         
-        .cartao-produto {
-            background-color: #fff;
-            border: 1px solid #ddd;
+        .cartao-prova {
+            background-color:azure;
+            border: 1px solid azure;
             border-radius: 8px;
-            width: 200px;
-            padding: 16px;
+            width: 400px;
+            padding: 25px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: black;
+            display: grid; place-items: center; height: 60vh;
+            text-align: left;
         }
         
-        .cartao-produto img {
+        .cartao-prova img {
             width: 100%;
             height: auto;
             border-bottom: 1px solid #ddd;
             padding-bottom: 15px;
         }
         
-        .cartao-produto h2 {
+        .cartao-prova h2 {
             font-size: 18px;
             margin: 0 0 10px;
         }
         
-        .cartao-produto p {
+        .cartao-prova p {
             margin: 0;
             color: #555;
         }
         
-        .cartao-produto span {
+        .cartao-prova span {
             display: block;
             margin-top: 10px;
             font-weight: bold;
@@ -67,12 +71,12 @@
         .header {
             text-align: center;
             width: 2000%;
-            height: 20%;
+            height: 10%;
             background-color: rgba(255, 255, 255, 0.8);
             padding: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             margin-bottom: 20px;
-            font-size: 40px;
+            font-size: x-large
         }
 
             .lateral {
@@ -146,35 +150,50 @@
         tr:nth-child(even) {
             background-color: #ffffff;
         }
-
     </style>
 </head> 
-<div id="listaprovas" class="listaprovas"></div>
-<SCRIPT>
+
+
+<body>
+   
+    
+    <div class="site">
+        
+        <div class="lateral">
+            <p></p>
+            <button class="b2" onclick="redirecionar3()">Início</button>
+            <button class="b2" onclick="redirecionar1()">Provas</button>
+            <button class="b2" onclick="redirecionar2()">Trabalhos</button>
+            <button class="b" id="logoutButton">Sair</button>
+        </div> 
+        <div class="header">
+            <h1>Provas Agendadas</h1>
+
+            <div id="lista-provas" class="lista-provas"></div>
+<script>
     document.addEventListener('DOMContentLoaded', () => {
-         fetch('http://localhost:3000/api/trabalhos')
+         fetch('http://localhost:3000/api/provas')
              .then(response => response.json())
              .then(provas => {
-                 const listaprovas = document.getElementById('listaprovas');
-                 for(i=0; i<listaprovas.length; i++){
-                     const prova = listaprovas[i]
-                     const cartaoprova = document.createElement('div');
-                     cartaoprova.className = 'cartaoprova';
+                 const listaProvas = document.getElementById('lista-provas');
+                 for(i=0; i<provas.length; i++){
+                     const prova = provas[i]
+                     const cartaoProva = document.createElement('div');
+                     cartaoProva.className = 'cartao-prova';
                      
-                     cartaotrabalho.innerHTML = `
-                         <h2>: ${prova.titulo}</h2>
+                     cartaoProva.innerHTML = `
                          <p>Tipo da prova: ${prova.tipo}</p>
                          <p>Pode consultar materiais de pesquisa: ${prova.consulta}</p>
                          <p>Pode usar ferramentas: ${prova.ferramentas}</p>
-                         <p>Se sim, quais (ferramentas): ${prova.ferramentas}</p>
-                         <p>Detalhes sobre a prova: ${prova.detalhes}</p>
+                         <p>Se sim, quais (ferramentas): ${prova.quaisfer}</p>
+                         <p>Detalhes sobre a prova: ${prova.especificacoes}</p>
                          <p>Tempo de prova: ${prova.tempo}</p>
-                         <p>Data da prova: ${prova.dataentrega}</p>
-                         <p>Para quais turmas é a prova: ${prova.turmas}</p>
+                         <p>Data da prova: ${prova.data}</p>
+                         <p>Para quais turmas é a prova: ${prova.turma}</p>
                          <p>Disciplina da prova: ${prova.disciplina}</p>
                          `;//barbaridade beu mdmdmmdmd
                      
-                     listatrabalhos.appendChild(cartaoprova);
+                     listaProvas.appendChild(cartaoProva);
                  }
     })
              .catch(error => {
@@ -204,25 +223,5 @@
         
 
 </script>
-
-
-<body>
-   
-    
-    <div class="site">
-        
-        <div class="lateral">
-            <p></p>
-            <button class="b2" onclick="redirecionar3()">Início</button>
-            <button class="b2" onclick="redirecionar1()">Provas</button>
-            <button class="b2" onclick="redirecionar2()">Trabalhos</button>
-            <button class="b" id="logoutButton">Sair</button>
-        </div> 
-        <div class="header">
-            <h1>Provas Agendadas</h1>
-            
-       
-        </div>
-        <div class="lista">
 </body>
 </html>
