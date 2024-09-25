@@ -3,8 +3,8 @@ const Trabalho = require('../modelo/Trabalho');
 const controladorTrabalho = {
     createTrabalho: async (req, res) => {
         try {
-            const novoTrabalho = await Trabalho.create(req.body);
-            res.json(novoTrabalho);
+            const trabalho = await Trabalho.create(req.body);
+            res.json(trabalho);
         } catch (error) {
             res.status(500).send(error.message);
         }
