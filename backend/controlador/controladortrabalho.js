@@ -1,4 +1,4 @@
-const Trabalho = require('../modelo/Trabalho');
+const Trabalho = require('../modelo/trabalho');
 
 const controladorTrabalho = {
     createTrabalho: async (req, res) => {

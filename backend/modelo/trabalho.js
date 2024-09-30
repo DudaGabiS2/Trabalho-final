@@ -53,7 +53,7 @@ Trabalho.init({
     }
 }, {
     sequelize,
-    modelName: 'Trabalho',
+    modelName: 'trabalhos',
     timestamps: false
 })
 

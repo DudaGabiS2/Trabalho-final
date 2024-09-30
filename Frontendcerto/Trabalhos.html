@@ -11,16 +11,24 @@
         flex-wrap: wrap;
         gap: 20px;
         justify-content: center;
+        padding: 5px;
+
         
     }
     
     .cartao-trabalho {
-        background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        width: 200px;
-        padding: 16px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: lightcyan;
+            border: 1px dotted lightcyan;
+            border-radius: 8px;
+            padding: 35px;
+            width: 400px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: rgb(38, 109, 103);
+            display: grid; place-items: center; height: 80vh;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+            overflow: scroll
     }
     
     .cartao-trabalho img {
@@ -36,49 +44,48 @@
     }
     
     .cartao-trabalho p {
-        margin: 0;
-        color: #555;
+        margin-bottom: 10px;
+        color: rgb(38, 109, 103);
     }
     
     .cartao-trabalho span {
-        display: block;
+        display: flex;
         margin-top: 10px;
         font-weight: bold;
-        color: #333;
+        color: black;
     }        
 
     body {
         font-family: 'Courier New', Courier, monospace;
-        background-image: url('Fundo3.jpg');
-        background-size: cover;
-        background-position: left;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        overflow: hidden
+            background-image: url('Fundo3.jpg');
+            background-size: cover;
+            background-position: left;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center
     }
 
     .header {
         text-align: center;
-        width: 2000%;
-        height: 20%;
-        background-color: rgba(255, 255, 255, 0.8);
-        padding: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        margin-bottom: 20px;
-        font-size: 40px;
+            width: 2000%;
+            height: 5%;
+            background-color: lightcyan;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-bottom: 100px;
+            font-size: xx-large
     }
 
         .lateral {
-        width: 250px;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        padding: 10px;
-        justify-content: flex-start;
-        background: local rgb(38, 109, 103);
+            background: rgb(38, 109, 103);
+            width: 250px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            justify-content: flex-start;
         }
 
 
@@ -141,38 +148,71 @@
     tr:nth-child(even) {
         background-color: #ffffff;
     }
+    h1{
+            margin-bottom: 100px;
 
+        }
+    
+    .cartao-trabalho h2{
+        color:black;
+        font-size: x-large;
+            }
 </style>
 </head> 
-<div id="lista-trabalhos" class="lista-trabalhos"></div>
+
+
+        
+            
+
+
+
+<body>
+
+
+<div class="site">
+    
+    <div class="lateral">
+        <p></p>
+        <button class="b2" onclick="redirecionar3()">Início</button>
+        <button class="b2" onclick="redirecionar1()">Provas</button>
+        <button class="b2" onclick="redirecionar2()">Trabalhos</button>
+        <button class="b" id="logoutButton">Sair</button>
+    </div> 
+    <div class="header">
+        <h1>Trabalhos Agendados</h1>
+
+    <div id="lista-trabalhos" class="lista-trabalhos"></div>
+    </div>
+    
+
 <script>
     document.addEventListener('DOMContentLoaded', () => {
          fetch('http://localhost:3000/api/trabalho')
              .then(response => response.json())
-             .then(trabalhos => {
-                 const listaTrabalhos = document.getElementById('lista-trabalhos');
-                 for(i=0; i<trabalho.length; i++){
-                     const trabalhos = listaTrabalhos[i]
+             .then(trabalhosDoBack => {
+                 const listaTrabalhosNoFront = document.getElementById('lista-trabalhos');
+                 for(i=0; i<trabalhosDoBack.length; i++){
+                     const trabalho = trabalhosDoBack[i]
                      const cartaoTrabalho = document.createElement('div');
                      cartaoTrabalho.className = 'cartao-trabalho';
                      
                      cartaoTrabalho.innerHTML = `
-                         <h2>Título do trabalho: ${trabalhos.titulo}</h2>
-                         <p>Tipo do trabalho: ${trabalhos.tipo}</p>
-                         <p>Precisa de cabeçalho: ${trabalhos.cab}</p>
-                         <p>Informações do cabeçalho: ${trabalhos.infocab}</p>
-                         <p>Assunto do trabalho: ${trabalhos.assunto}</p>
-                         <p>Explicação e detalhes sobre o trabalho: ${trabalhos.explicacao}</p>
-                         <p>Necessário informar referência: ${trabalhos.referencia}</p>
-                         <p>Precisará de apresentação: ${trabalhos.ap}</p>
-                         <p>Detalhes da apresentação: ${trabalhos.detap}</p>
-                         <p>Data de entrega: ${trabalhos.dataentrega}</p>
-                         <p>Data de apresentação: ${trabalhos.dataap}</p>
-                         <p>Para quais turmas é o trabalho: ${trabalhos.turma}</p>
-                         <p>Matéria do trabalho: ${trabalhos.disciplina}</p>
+                         <h2>Título do trabalho: ${trabalho.titulo}</h2>
+                         <p>Tipo do trabalho: ${trabalho.tipo}</p>
+                         <p>Precisa de cabeçalho: ${trabalho.cab}</p>
+                         <p>Informações do cabeçalho: ${trabalho.infocab}</p>
+                         <p>Assunto do trabalho: ${trabalho.assunto}</p>
+                         <p>Explicação e detalhes sobre o trabalho: ${trabalho.explicacao}</p>
+                         <p>Necessário informar referência: ${trabalho.referencia}</p>
+                         <p>Precisará de apresentação: ${trabalho.ap}</p>
+                         <p>Detalhes da apresentação: ${trabalho.detap}</p>
+                         <p>Data de entrega: ${trabalho.dataentrega}</p>
+                         <p>Data de apresentação: ${trabalho.dataap}</p>
+                         <p>Para quais turmas é o trabalho: ${trabalho.turma}</p>
+                         <p>Matéria do trabalho: ${trabalho.disciplina}</p>
                          `;
                      
-                     listatrabalhos.appendChild(cartaoTrabalho);
+                     listaTrabalhosNoFront.appendChild(cartaoTrabalho);
                  }
     })
              .catch(error => {
@@ -203,29 +243,5 @@ function redirecionar3() {
 
 </script>
 
-
-        
-            
-
-
-
-<body>
-
-
-<div class="site">
-    
-    <div class="lateral">
-        <p></p>
-        <button class="b2" onclick="redirecionar3()">Início</button>
-        <button class="b2" onclick="redirecionar1()">Provas</button>
-        <button class="b2" onclick="redirecionar2()">Trabalhos</button>
-        <button class="b" id="logoutButton">Sair</button>
-    </div> 
-    <div class="header">
-        <h1>Trabalhos Agendados</h1>
-        
-   
-    </div>
-    <div class="lista">
 </body>
 </html>
