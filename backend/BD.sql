@@ -24,32 +24,26 @@ CREATE TABLE IF NOT EXISTS `alunos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` varchar(50) NOT NULL,
   `senha` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `senha` (`senha`) USING BTREE,
-  UNIQUE KEY `user` (`user`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_nopad_ci;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user` (`user`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_nopad_ci;
 
--- Copiando dados para a tabela trabalho final.alunos: ~2 rows (aproximadamente)
+-- Copiando dados para a tabela trabalho final.alunos: ~1 rows (aproximadamente)
 INSERT INTO `alunos` (`id`, `user`, `senha`) VALUES
-	(1, 'Zézinho', ''),
-	(2, '41452', '543'),
-	(3, 'gabriel', '1602');
+	(34, 'Duda', '123');
 
 -- Copiando estrutura para tabela trabalho final.professors
 CREATE TABLE IF NOT EXISTS `professors` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` varchar(50) NOT NULL,
   `senha` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `user` (`user`) USING BTREE,
-  UNIQUE KEY `senha` (`senha`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_nopad_ci;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user` (`user`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_nopad_ci;
 
--- Copiando dados para a tabela trabalho final.professors: ~3 rows (aproximadamente)
+-- Copiando dados para a tabela trabalho final.professors: ~1 rows (aproximadamente)
 INSERT INTO `professors` (`id`, `user`, `senha`) VALUES
-	(1, 'Jeuri', 'Karlmarxislove'),
-	(2, '4145', '54'),
-	(3, '41452', '543');
+	(8, 'Prof. Zé', '1234');
 
 -- Copiando estrutura para tabela trabalho final.provas
 CREATE TABLE IF NOT EXISTS `provas` (
@@ -57,39 +51,43 @@ CREATE TABLE IF NOT EXISTS `provas` (
   `tipo` varchar(50) NOT NULL DEFAULT '0',
   `consulta` varchar(50) NOT NULL DEFAULT '0',
   `ferramentas` varchar(50) NOT NULL DEFAULT '0',
-  `quaisfer` varchar(50) DEFAULT '0',
+  `quaisfer` varchar(100) DEFAULT '0',
   `especificacoes` text NOT NULL,
   `tempo` varchar(50) NOT NULL DEFAULT '0',
   `data` date NOT NULL,
-  `turma` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `turma` text NOT NULL,
+  `disciplina` varchar(50) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_nopad_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_nopad_ci;
 
--- Copiando dados para a tabela trabalho final.provas: ~0 rows (aproximadamente)
-INSERT INTO `provas` (`id`, `tipo`, `consulta`, `ferramentas`, `quaisfer`, `especificacoes`, `tempo`, `data`, `turma`) VALUES
-	(1, 'Escrita', 'Sim', '0', 'Dicionário', 'Assuntos: Comidas em alemão. Especificações: não tem :)', 'uma aula', '0000-00-00', 2.100000);
+-- Copiando dados para a tabela trabalho final.provas: ~2 rows (aproximadamente)
+INSERT INTO `provas` (`id`, `tipo`, `consulta`, `ferramentas`, `quaisfer`, `especificacoes`, `tempo`, `data`, `turma`, `disciplina`) VALUES
+	(7, 'Escrita', 'Não', 'Sim', 'Calculadora', 'A prova será sobre as aplicações da fórmula de Bhaskara.', '1 aula', '2024-10-07', '1°1, 1°2, 1°3, 1°4 e 1°5', 'Matemática'),
+	(8, 'Escrita', 'Sim', 'Não', '----', 'A prova será um questionário sobre as regiões, estados, siglas e capitais do Brasil.', '2 aulas', '0000-00-00', '2°1, 2°2, 2°3 e 2°4', 'Geografia');
 
 -- Copiando estrutura para tabela trabalho final.trabalhos
 CREATE TABLE IF NOT EXISTS `trabalhos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tipo` varchar(50) NOT NULL DEFAULT '0',
   `cab` varchar(50) NOT NULL DEFAULT '0',
-  `infocab` varchar(50) DEFAULT '0',
-  `titulo` varchar(50) NOT NULL DEFAULT '0',
-  `assunto` varchar(50) NOT NULL DEFAULT '0',
+  `infocab` varchar(100) DEFAULT '0',
+  `titulo` varchar(100) NOT NULL DEFAULT '0',
+  `assunto` text NOT NULL,
   `explicacao` text NOT NULL,
   `referencia` varchar(50) NOT NULL DEFAULT '0',
   `ap` varchar(50) NOT NULL DEFAULT '0',
   `detap` text DEFAULT NULL,
   `dataentrega` date NOT NULL,
   `dataap` date DEFAULT NULL,
-  `turma` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `turma` text NOT NULL,
+  `disciplina` varchar(50) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_nopad_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_nopad_ci;
 
--- Copiando dados para a tabela trabalho final.trabalhos: ~0 rows (aproximadamente)
-INSERT INTO `trabalhos` (`id`, `tipo`, `cab`, `infocab`, `titulo`, `assunto`, `explicacao`, `referencia`, `ap`, `detap`, `dataentrega`, `dataap`, `turma`) VALUES
-	(1, 'Slides', 'Sim', 'Nome, turma, data', 'Como Roubar um Banco: Guia Prático do Prudaz', 'Ensine os aluninhos a roubar um banco, bem passo a', 'Trabalho autoexlicativo, eficiência dos métodos será avaliada', 'Não', 'Sim', 'A nota depende do sucesso do assalto com base na explicação', '0000-00-00', '0000-00-00', 2.100000);
+-- Copiando dados para a tabela trabalho final.trabalhos: ~2 rows (aproximadamente)
+INSERT INTO `trabalhos` (`id`, `tipo`, `cab`, `infocab`, `titulo`, `assunto`, `explicacao`, `referencia`, `ap`, `detap`, `dataentrega`, `dataap`, `turma`, `disciplina`) VALUES
+	(9, 'Pesquisa escrita', 'Sim', 'Escola, nome, data e disciplina', 'As Jacqueries', 'Revoltas Jacqueries', 'Texto contendo as motivações, o que foram e quando começaram as revoltas Jacqueries.', 'Sim', 'Não', '', '2024-09-25', '2024-10-17', '2°1, 2°2, 2°3 e 2°4', 'História'),
+	(10, 'Trabalho artístico e cartaz', 'Não', '--', 'Escultura Indígena', 'Arte indígena brasileira', 'Os alunos devem replicar as esculturas indígenas em sala de aula e fazer um cartaz sobre o quê essa arte significa para o povo indígena e por que a realizam desse jeito.', 'Não', 'Sim', 'A desenvoltura, aprofundamento e entendimento dos alunos sobre o trabalho será avaliada. Não é permitida leitura.', '2024-10-16', '2024-10-16', '2°1 e 2°2', 'Artes');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
